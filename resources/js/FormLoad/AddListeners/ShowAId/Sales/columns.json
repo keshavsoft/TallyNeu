@@ -1,12 +1,17 @@
 [
     {
-        "field": "LEDGERNAME",
-        "title": "LEDGERNAME",
-        "tagName": "LEDGERNAME"
+        "field": "PARTYNAME",
+        "title": "PARTYNAME",
+        "tagName": "PARTYNAME"
     },
     {
-        "field": "GUID",
-        "title": "GUID",
-        "tagName": "GUID"
+        "field": "VOUCHERTYPE",
+        "title": "VOUCHERTYPE",
+        "tagName": "VOUCHERTYPE"
+    },
+    {
+        "field": "BATCHDETAILS",
+        "title": "BATCHDETAILS",
+        "tagName": "BATCHDETAILS"
     }
 ]

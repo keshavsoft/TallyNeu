@@ -222,24 +222,40 @@
     <header>
         <div class="px-3 py-2 border-bottom">
             <div class="row">
-                <div class="col">
-                    <a id="MastersHeaderATagId" href="#"
-                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <div class="col-1">
+                    <a id="MastersHeaderATagId" href="#">
                         <svg id="MastersSvgId" class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
                             <use id="MastersUseId" xlink:href="#wifiOff" />
                         </svg>
-                        <span id="MenuNameId" class="fs-4">Menu Name</span>
                     </a>
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <select class="form-select" id="SelectReportId">
                         <option selected>Open this select menu</option>
+                        <option value="Ledgers">Ledgers</option>
                         <option value="Sales">Sales</option>
-                        <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-5" id="PeriodColId" style="display:block;">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="FromDateId" class="form-label">From</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="FromDateId" value="2024-07-12">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="ToDateId" class="form-label">To</label>
+
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" id="ToDateId" value="2024-07-12">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
                     <select class="form-select" id="SelectCompanyId">
                         <option selected>Open this select menu</option>
                         <option value="1">One</option>
@@ -247,7 +263,7 @@
                         <option value="3">Three</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <a href="#" class="btn btn-primary" id="ShowAId">Show</a>
                 </div>
             </div>
@@ -259,7 +275,9 @@
             <span class="visually-hidden">Loading...</span>
         </div>
 
-        <table id="tableBS"></table>
+        <div class="container">
+            <table id="tableBS"></table>
+        </div>
     </main>
     <footer>
         <!-- place footer here -->

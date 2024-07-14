@@ -1,4 +1,5 @@
 import { StartFunc as Sales } from "./Sales/EntryFile.js";
+import { StartFunc as Ledgers } from "./Ledgers/EntryFile.js";
 
 let jFLocalHideSpinner = () => {
     let jVarLocalSpinnerId = document.getElementById("SpinnerId");
@@ -13,12 +14,14 @@ let jFLocalShowSpinner = () => {
 let StartFunc = async () => {
     jFLocalShowSpinner();
     let jVarLocalSelectedReport = jFLocalSelectReportId();
-    console.log("jVarLocalSelectedReport : ", jVarLocalSelectedReport);
+
     switch (jVarLocalSelectedReport) {
         case "Sales":
             await Sales();
             break;
-
+        case "Ledgers":
+            await Ledgers();
+            break;
         default:
             break;
     }

@@ -10,9 +10,8 @@ let StartFunc = async () => {
 
         let dom = parseXml(jVarLocalResponseText);
         let jVarLocalJson = xml2json(dom, "");
-        console.log("jVarLocalAfterReplace : ", JSON.parse(jVarLocalJson).ENVELOPE.SALES[0]);
 
-        BuildBsTable({ inData: JSON.parse(jVarLocalJson).ENVELOPE.SALES });
+        BuildBsTable({ inData: JSON.parse(jVarLocalJson).ENVELOPE.LEDGERS });
     };
 };
 

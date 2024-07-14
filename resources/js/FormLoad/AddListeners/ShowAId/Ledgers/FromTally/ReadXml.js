@@ -1,6 +1,6 @@
 let StartFunc = async () => {
     try {
-        let jVarLocalUrl = "Tally/xml/SelectCompany/Transactions/Sales/BatchDate.xml";
+        let jVarLocalUrl = "Tally/xml/SelectCompany/Masters/Ledgers/simple.xml";
 
         let jVarLocalResponse = await fetch(jVarLocalUrl);
 

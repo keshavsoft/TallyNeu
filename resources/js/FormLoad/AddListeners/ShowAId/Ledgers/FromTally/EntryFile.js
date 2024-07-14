@@ -1,15 +1,16 @@
 import { StartFunc as ReadXml } from "./ReadXml.js";
-import { StartFunc as addFilters } from "./addFilters.js";
 
 let StartFunc = async () => {
     try {
         let jVarLocalXml = await ReadXml();
-        console.log("jVarLocalXml : ", jVarLocalXml);
-        let jVarLocalAlteredXml = addFilters({ inXml: jVarLocalXml });
+
+        let jVarLocalCompanyName = jFLocalSelectCompanyId();
+
+        let jVarLocalAfterReplace = jVarLocalXml.replace("KeshavSoft_CompanyName", jVarLocalCompanyName);
 
         const config = {
             method: 'POST',
-            body: jVarLocalAlteredXml
+            body: jVarLocalAfterReplace
         };
 
         let jVarLocalResponse = await fetch("http://localhost:9000/", config);
