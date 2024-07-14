@@ -1,5 +1,6 @@
 import { StartFunc as Sales } from "./Sales/EntryFile.js";
 import { StartFunc as Ledgers } from "./Ledgers/EntryFile.js";
+import { StartFunc as SalesBatchLine } from "./SalesBatchLine/EntryFile.js";
 
 let jFLocalHideSpinner = () => {
     let jVarLocalSpinnerId = document.getElementById("SpinnerId");
@@ -21,6 +22,9 @@ let StartFunc = async () => {
             break;
         case "Ledgers":
             await Ledgers();
+            break;
+        case "SalesBatchLine":
+            await SalesBatchLine();
             break;
         default:
             break;

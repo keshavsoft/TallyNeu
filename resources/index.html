@@ -234,7 +234,7 @@
                         <option selected>Open this select menu</option>
                         <option value="Ledgers">Ledgers</option>
                         <option value="Sales">Sales</option>
-                        <option value="3">Three</option>
+                        <option value="SalesBatchLine">SalesBatchLine</option>
                     </select>
                 </div>
                 <div class="col-5" id="PeriodColId" style="display:block;">
@@ -301,6 +301,19 @@
 
 
     <script type="module" src="./js/EntryFile.js"></script>
+
+    <script>
+        function jFLocalBatchAmountTotal(data) {
+            console.log("data : ", data);
+            var field = this.field;
+
+            return data.map(function (row) {
+                return +parseFloat(row[field]);
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        };
+    </script>
 </body>
 
 </html>

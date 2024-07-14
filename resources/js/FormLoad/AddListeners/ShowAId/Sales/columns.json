@@ -10,8 +10,28 @@
         "tagName": "VOUCHERTYPE"
     },
     {
-        "field": "BATCHDETAILS",
-        "title": "BATCHDETAILS",
-        "tagName": "BATCHDETAILS"
+        "field": "STOCKITEMNAME",
+        "title": "STOCKITEMNAME",
+        "tagName": "STOCKITEMNAME"
+    },
+    {
+        "field": "DATE",
+        "title": "DATE",
+        "tagName": "DATE"
+    },
+    {
+        "field": "REFERENCE",
+        "title": "REFERENCE",
+        "tagName": "REFERENCE"
+    },
+    {
+        "field": "VOUCHER_CANCELLED",
+        "title": "VOUCHER_CANCELLED",
+        "tagName": "VOUCHER_CANCELLED"
+    },
+    {
+        "field": "LEDGER_POSITIVE",
+        "title": "LEDGER_POSITIVE",
+        "tagName": "LEDGER_POSITIVE"
     }
 ]
