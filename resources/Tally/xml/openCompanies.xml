@@ -28,7 +28,7 @@
                         <XMLTAG>&quot;Companies&quot;</XMLTAG>
                     </LINE>
                     <FIELD NAME="KS_company_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <XMLTAG>&quot;Company&quot;</XMLTAG>
+                        <XMLTAG>&quot;CompanyName&quot;</XMLTAG>
                         <SET>$name</SET>
                     </FIELD>
                     <COLLECTION NAME="KS_CompanyMasters" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">

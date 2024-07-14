@@ -1,5 +1,6 @@
-import { StartFunc as xml2json } from "../../xml2json.js";
-import { StartFunc as FromTally } from "./FromTally.js";
+import { StartFunc as xml2json } from "../../../../xml2json.js";
+import { StartFunc as FromTally } from "./FromTally/EntryFile.js";
+import { StartFunc as BuildBsTable } from "./BuildBsTable/EntryFile.js";
 
 let StartFunc = async () => {
     let jVarLocalTallyStatus = await FromTally();
@@ -10,7 +11,7 @@ let StartFunc = async () => {
         let dom = parseXml(jVarLocalResponseText);
         let jVarLocalJson = xml2json(dom, "");
 
-        jFLocalToSelect({ inJsonArray: jVarLocalJson });
+        BuildBsTable({ inData: JSON.parse(jVarLocalJson).ENVELOPE.LEDGERS });
     };
 };
 
@@ -35,20 +36,6 @@ function parseXml(xml) {
     else
         alert("cannot parse xml string!");
     return dom;
-};
-
-let jFLocalToSelect = ({ inJsonArray }) => {
-    let jVarLocalFromTally = JSON.parse(inJsonArray);
-    
-    let jVarLocalSelectCompanyId = document.getElementById('SelectCompanyId');
-
-    jVarLocalSelectCompanyId.innerHTML = "";
-
-    for (const [key, value] of Object.entries(jVarLocalFromTally.ENVELOPE.COMPANIES)) {
-        jVarLocalSelectCompanyId.options.add(
-            new Option(value, value)
-        )
-    };
 };
 
 export { StartFunc };

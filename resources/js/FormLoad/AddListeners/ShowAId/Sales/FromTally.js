@@ -17,7 +17,7 @@ let StartFunc = async () => {
 
 let LocalFuncReadXml = async () => {
     try {
-        let jVarLocalUrl = "Tally/xml/openCompanies.xml";
+        let jVarLocalUrl = "Tally/xml/SelectCompany/Masters/Ledgers/Simple.xml";
         let jVarLocalResponse = await fetch(jVarLocalUrl);
 
         if (jVarLocalResponse.status === 200) {
