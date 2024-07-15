@@ -8,12 +8,12 @@ let StartFunc = async () => {
 
     if (jVarLocalTallyStatus.status === 200) {
         let jVarLocalResponseText = await jVarLocalTallyStatus.text();
-        localStorage.setItem("k1", jVarLocalResponseText);
+        // localStorage.setItem("k1", jVarLocalResponseText);
         let dom = parseXml(jVarLocalResponseText);
 
         let jVarLocalJson = xml2json(dom, "");
 
-        localStorage.setItem("jVarLocalJson", jVarLocalJson);
+        // localStorage.setItem("jVarLocalJson", jVarLocalJson);
         let jVarLocalBatchLineWise = ToBatchWiseLines({ inBillWise: JSON.parse(jVarLocalJson).ENVELOPE.SALES });
         let jVarLocalSorted = jFLocalSort({ inCollection: jVarLocalBatchLineWise });
 
@@ -22,7 +22,7 @@ let StartFunc = async () => {
 };
 
 const jFLocalSort = ({ inCollection }) => {
-    return _.sortBy(inCollection, ['BATCHITEM', 'BATCHNAME']);
+    return _.sortBy(inCollection, ['VOUCHERNUMBER']);
 };
 
 function parseXml(xml) {
