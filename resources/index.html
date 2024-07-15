@@ -335,6 +335,9 @@
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.6/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"
         integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
 
@@ -342,11 +345,10 @@
 
     <script>
         function jFLocalBatchAmountTotal(data) {
-            console.log("data : ", data);
             var field = this.field;
 
             return data.map(function (row) {
-                return +parseFloat(row[field]);
+                return +parseFloat(row[field].replace(",", ""));
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0)

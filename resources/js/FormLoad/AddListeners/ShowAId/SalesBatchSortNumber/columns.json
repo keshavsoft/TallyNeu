@@ -7,12 +7,14 @@
     {
         "field": "VOUCHERTYPE",
         "title": "Voucher Type",
-        "tagName": "VOUCHERTYPE"
+        "tagName": "VOUCHERTYPE",
+        "filterControl": "select"
     },
     {
         "field": "VOUCHERNUMBER",
         "title": "Voucher Number",
-        "tagName": "VOUCHERNUMBER"
+        "tagName": "VOUCHERNUMBER",
+        "filterControl": "select"
     },
     {
         "field": "DATE",
@@ -29,8 +31,6 @@
         "title": "Batch Name",
         "tagName": "BATCHNAME"
     },
-    
-
     {
         "field": "BATCHAMOUNT",
         "title": "Amount",
