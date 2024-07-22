@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
   "applicationId": "js.neutralino.sample",
-  "version": "1.0.0",
+  "version": "2024.7.22",
   "defaultMode": "chrome",
   "port": 0,
   "documentRoot": "/resources/",
@@ -76,7 +76,7 @@
     }
   },
   "cli": {
-    "binaryName": "k3",
+    "binaryName": "k10",
     "resourcesPath": "/resources/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/resources/js/neutralino.js",

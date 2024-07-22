@@ -1,5 +1,6 @@
 import { StartFunc as xml2json } from "../../xml2json.js";
 import { StartFunc as FromTally } from "./FromTally.js";
+import { StartFunc as ShowInSelect } from "./ShowInSelect.js";
 
 let StartFunc = async () => {
     let jVarLocalTallyStatus = await FromTally();
@@ -9,8 +10,8 @@ let StartFunc = async () => {
 
         let dom = parseXml(jVarLocalResponseText);
         let jVarLocalJson = xml2json(dom, "");
-        console.log("jVarLocalJson : ", jVarLocalJson);
-        jFLocalToSelect({ inJsonArray: jVarLocalJson });
+        // console.log("jVarLocalJson : ", jVarLocalJson);
+        ShowInSelect({ inJsonArray: jVarLocalJson });
     };
 };
 

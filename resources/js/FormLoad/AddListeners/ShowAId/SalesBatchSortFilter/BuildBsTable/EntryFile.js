@@ -1,8 +1,10 @@
 import { StartFunc as StartFuncTableTag } from "./TableTag.js";
+import { StartFunc as ShowFilters } from "./ShowFilters.js";
 import ColumnsJson from '../columns.json' with {type: 'json'};
 const tableName = "tableBS";
 
 const StartFunc = ({ inData }) => {
+    ShowFilters();
     StartFuncTableTag();
     jFLocalInitialize({ inData });
 };
@@ -11,7 +13,7 @@ const jFLocalInitialize = ({ inData }) => {
     var $table = $(`#${tableName}`);
 
     $table.bootstrapTable("destroy").bootstrapTable({
-        data: inData,
+        data: [],
         columns: jFLocalGetVisibleColumns()
     });
 };

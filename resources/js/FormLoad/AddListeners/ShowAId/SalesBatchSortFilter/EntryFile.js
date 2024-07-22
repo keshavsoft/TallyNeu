@@ -16,6 +16,7 @@ let StartFunc = async () => {
         // localStorage.setItem("jVarLocalJson", jVarLocalJson);
         let jVarLocalBatchLineWise = ToBatchWiseLines({ inBillWise: JSON.parse(jVarLocalJson).ENVELOPE.SALES });
         let jVarLocalSorted = jFLocalSort({ inCollection: jVarLocalBatchLineWise });
+        jVarGlobalPresentViewData = jVarLocalSorted;
 
         BuildBsTable({ inData: jVarLocalSorted });
     };
