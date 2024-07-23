@@ -4,16 +4,16 @@ import ColumnsJson from '../columns.json' with {type: 'json'};
 const tableName = "tableBS";
 
 const StartFunc = ({ inData }) => {
-    ShowFilters();
     StartFuncTableTag();
     jFLocalInitialize({ inData });
+    ShowFilters();
 };
 
 const jFLocalInitialize = ({ inData }) => {
     var $table = $(`#${tableName}`);
 
     $table.bootstrapTable("destroy").bootstrapTable({
-        data: [],
+        data: inData,
         columns: jFLocalGetVisibleColumns()
     });
 };

@@ -3,6 +3,8 @@ import { StartFunc as Ledgers } from "./Ledgers/EntryFile.js";
 import { StartFunc as SalesBatchLine } from "./SalesBatchLine/EntryFile.js";
 import { StartFunc as SalesBatchSortNumber } from "./SalesBatchSortNumber/EntryFile.js";
 import { StartFunc as SalesBatchSortFilter } from "./SalesBatchSortFilter/EntryFile.js";
+import { StartFunc as SalesBatchMultiSelect } from "./SalesBatchMultiSelect/EntryFile.js";
+import { StartFunc as SalesBatchMultiShow } from "./SalesBatchMultiShow/EntryFile.js";
 
 let jFLocalHideSpinner = () => {
     let jVarLocalSpinnerId = document.getElementById("SpinnerId");
@@ -17,7 +19,7 @@ let jFLocalShowSpinner = () => {
 let StartFunc = async () => {
     jFLocalShowSpinner();
     let jVarLocalSelectedReport = jFLocalSelectReportId();
-
+    // console.log("jVarLocalSelectedReport : ", jVarLocalSelectedReport);
     switch (jVarLocalSelectedReport) {
         case "Sales":
             await Sales();
@@ -33,6 +35,12 @@ let StartFunc = async () => {
             break;
         case "SalesBatchSortFilter":
             await SalesBatchSortFilter();
+            break;
+        case "SalesBatchMultiSelect":
+            await SalesBatchMultiSelect();
+            break;
+        case "SalesBatchMultiShow":
+            await SalesBatchMultiShow();
             break;
         default:
             break;
@@ -50,4 +58,4 @@ let jFLocalSelectReportId = () => {
     };
 };
 
-export { StartFunc };92
+export { StartFunc }; 92

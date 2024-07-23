@@ -76,7 +76,7 @@
     }
   },
   "cli": {
-    "binaryName": "k21",
+    "binaryName": "k41",
     "resourcesPath": "/resources/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/resources/js/neutralino.js",

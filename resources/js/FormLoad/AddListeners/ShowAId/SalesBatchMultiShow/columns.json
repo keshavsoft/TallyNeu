@@ -1,10 +1,5 @@
 [
     {
-        "field": "PARTYNAME",
-        "title": "PARTYNAME",
-        "tagName": "PARTYNAME"
-    },
-    {
         "field": "VOUCHERTYPE",
         "title": "Voucher Type",
         "tagName": "VOUCHERTYPE"
@@ -13,6 +8,11 @@
         "field": "VOUCHERNUMBER",
         "title": "Voucher Number",
         "tagName": "VOUCHERNUMBER"
+    },
+    {
+        "field": "PARTYNAME",
+        "title": "PARTYNAME",
+        "tagName": "PARTYNAME"
     },
     {
         "field": "DATE",

@@ -241,7 +241,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <select class="form-select" id="SelectReportId">
                         <option selected>Open this select menu</option>
                         <option value="Ledgers">Ledgers</option>
@@ -249,6 +249,8 @@
                         <option value="SalesBatchLine">SalesBatchLine</option>
                         <option value="SalesBatchSortNumber">SalesBatchSortNumber</option>
                         <option value="SalesBatchSortFilter">SalesBatchSortFilter</option>
+                        <option value="SalesBatchMultiSelect">SalesBatchMultiSelect</option>
+                        <option value="SalesBatchMultiShow">SalesBatchMultiShow</option>
                     </select>
                 </div>
                 <div class="col-5" id="PeriodColId" style="display:block;">
@@ -291,8 +293,33 @@
 
         <div class="container">
             <div class="card mt-3">
-                <h5 class="card-header">Filters</h5>
+                <h5 class="card-header">Filters Dynamic</h5>
                 <div class="card-body" id="FiltersBodyId">
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary" id="ApplyFilterId">Filter Data</a>
+                </div>
+            </div>
+
+            <div class="card mt-3" style="display: none;">
+                <h5 class="card-header">Filters</h5>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Voucher Types</label>
+                        <div class="col-sm-8">
+                            <select id="VoucherTypeFilterId" multiple class="chosen-select form-control" tabindex="1">
+                            </select>
+                        </div>
+                        <button id="VoucherTypeButtonId" class="btn btn-warning col-md-2">Filter</button>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Voucher Numbers</label>
+                        <div class="col-sm-8">
+                            <select id="VoucherNumberFilterId" multiple class="chosen-select form-control" tabindex="1">
+                            </select>
+                        </div>
+                        <button id="VoucherNumberButtonId" class="btn btn-warning col-md-2">Filter</button>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary" id="ApplyFilterId">Filter Data</a>
@@ -306,10 +333,11 @@
     <template id="TemplateFilterRowId">
         <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">{{Label}}</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
                 <select id="{{id}}" multiple class="chosen-select form-control" tabindex="1">
                 </select>
             </div>
+            <button class="btn btn-warning col-sm-2">Show</button>
         </div>
     </template>
 
