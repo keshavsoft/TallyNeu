@@ -1,15 +1,14 @@
+import { StartFunc as SelectedOptions } from "./SelectedOptions.js";
+import { StartFunc as BuildBsTable } from "./BuildBsTable/EntryFile.js";
+
 let StartFunc = () => {
-    const jVarLocalSelect = document.getElementById("VoucherTypeSelectId");
+    const jVarLocalSelected = SelectedOptions();
 
-    const jVarLocalSelected = Array.from(jVarLocalSelect.options).filter(function (option_element) {
-        let option_text = option_element.text;
-        let option_value = option_element.value;
-        let is_option_selected = option_element.selected;
-
-        return is_option_selected;
+    const jVarLocalFilteredRows = jVarGlobalPresentViewData.filter(element => {
+        return jVarLocalSelected.includes(element.VOUCHERNUMBER);
     });
 
-    console.log("jVarLocalSelected : ", jVarLocalSelected);
+    BuildBsTable({ inData: jVarLocalFilteredRows });
 };
 
 export { StartFunc };

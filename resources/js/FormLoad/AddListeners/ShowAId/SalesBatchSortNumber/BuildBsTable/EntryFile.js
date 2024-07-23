@@ -1,8 +1,11 @@
 import { StartFunc as StartFuncTableTag } from "./TableTag.js";
+import { StartFunc as showFilters } from "./showFilters.js";
+
 import ColumnsJson from '../columns.json' with {type: 'json'};
 const tableName = "tableBS";
 
 const StartFunc = ({ inData }) => {
+    showFilters();
     StartFuncTableTag();
     jFLocalInitialize({ inData });
 };
