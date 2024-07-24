@@ -1,29 +1,36 @@
 import { StartFunc as buttonClick } from "./buttonClick.js";
+import { StartFunc as insertNewRow } from "./insertNewRow.js";
 
-const StartFunc = () => {
+const CommonHtmlId = "VoucherTypeFilterId";
+
+const StartFunc = ({ inColumnIndex }) => {
+    let jVarLocalColumnIndex = inColumnIndex;
     let jVarLocalTableOptions = $("#tableBS").bootstrapTable("getOptions");
-    let jVarLocalTitle = jVarLocalTableOptions.columns[0][0].title;
-    let jVarLocalField = jVarLocalTableOptions.columns[0][0].field;
+    let jVarLocalColumn = jVarLocalTableOptions.columns[0][inColumnIndex];
+    let jVarLocalTitle = jVarLocalColumn.title;
+    let jVarLocalField = jVarLocalColumn.field;
 
-    const unique = [...new Set(jVarGlobalPresentViewData.map((item) => {
+    let data = $("#tableBS").bootstrapTable('getData', { unfiltered: true });
+
+    const unique = [...new Set(data.map((item) => {
         return item[jVarLocalField];
     }))];
 
-    jFLocalInsertRow({
+    insertNewRow({
         inLabel: jVarLocalTitle,
         inData: unique,
+        inColumnIndex: jVarLocalColumnIndex,
         inField: jVarLocalField
     });
 };
 
-const jFLocalInsertRow = ({ inLabel, inData, inField }) => {
+const jFLocalInsertRow = ({ inLabel, inData, inColumnIndex }) => {
     let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
     let jVarLocalTemplateRow = document.getElementById("TemplateFilterRowId");
     const clone = jVarLocalTemplateRow.content.cloneNode(true);
 
     jFLocalShowLabel({ inLabel, inClone: clone });
-    jFLocalShowColumnIndex({ inClone: clone, inColumnIndex: 0 });
-    jFLocalShowColumnField({ inField, inClone: clone });
+    jFLocalShowColumnIndex({ inClone: clone, inColumnIndex });
 
     let jVarLocalSelect = clone.querySelector("select");
     jVarLocalSelect.innerHTML = inData.map(t => '<option value="' + t + '">' + t + '</option>');
@@ -33,7 +40,7 @@ const jFLocalInsertRow = ({ inLabel, inData, inField }) => {
 
     jVarLocalFiltersBodyId.appendChild(clone);
 
-    $(jVarLocalFiltersBodyId.children[0].querySelector("select")).chosen();
+    $(jVarLocalFiltersBodyId.children[inColumnIndex].querySelector("select")).chosen();
 };
 
 const jFLocalShowLabel = ({ inLabel, inClone }) => {
@@ -48,13 +55,6 @@ const jFLocalShowColumnIndex = ({ inColumnIndex, inClone }) => {
 
     let jVarLocalOrderItemsCategoryClass = clone.querySelector(".row");
     jVarLocalOrderItemsCategoryClass.dataset.columnindex = inColumnIndex;
-};
-
-const jFLocalShowColumnField = ({ inField, inClone }) => {
-    const clone = inClone;
-
-    let jVarLocalOrderItemsCategoryClass = clone.querySelector(".row");
-    jVarLocalOrderItemsCategoryClass.dataset.columnname = inField;
 };
 
 export { StartFunc };

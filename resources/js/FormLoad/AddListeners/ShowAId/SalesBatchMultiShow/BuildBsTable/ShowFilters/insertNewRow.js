@@ -1,28 +1,12 @@
 import { StartFunc as buttonClick } from "./buttonClick.js";
 
-const StartFunc = () => {
-    let jVarLocalTableOptions = $("#tableBS").bootstrapTable("getOptions");
-    let jVarLocalTitle = jVarLocalTableOptions.columns[0][0].title;
-    let jVarLocalField = jVarLocalTableOptions.columns[0][0].field;
-
-    const unique = [...new Set(jVarGlobalPresentViewData.map((item) => {
-        return item[jVarLocalField];
-    }))];
-
-    jFLocalInsertRow({
-        inLabel: jVarLocalTitle,
-        inData: unique,
-        inField: jVarLocalField
-    });
-};
-
-const jFLocalInsertRow = ({ inLabel, inData, inField }) => {
+const StartFunc = ({ inLabel, inData, inField, inColumnIndex }) => {
     let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
     let jVarLocalTemplateRow = document.getElementById("TemplateFilterRowId");
     const clone = jVarLocalTemplateRow.content.cloneNode(true);
 
     jFLocalShowLabel({ inLabel, inClone: clone });
-    jFLocalShowColumnIndex({ inClone: clone, inColumnIndex: 0 });
+    jFLocalShowColumnIndex({ inClone: clone, inColumnIndex });
     jFLocalShowColumnField({ inField, inClone: clone });
 
     let jVarLocalSelect = clone.querySelector("select");
@@ -33,7 +17,7 @@ const jFLocalInsertRow = ({ inLabel, inData, inField }) => {
 
     jVarLocalFiltersBodyId.appendChild(clone);
 
-    $(jVarLocalFiltersBodyId.children[0].querySelector("select")).chosen();
+    $(jVarLocalFiltersBodyId.children[inColumnIndex].querySelector("select")).chosen();
 };
 
 const jFLocalShowLabel = ({ inLabel, inClone }) => {

@@ -5,7 +5,7 @@ import { StartFunc as ToBatchWiseLines } from "./ToBatchWiseLines.js";
 
 let StartFunc = async () => {
     let jVarLocalTallyStatus = await FromTally();
-    console.log("aaaaaaaaaaaa : ", jVarLocalTallyStatus);
+    // console.log("aaaaaaaaaaaa : ", jVarLocalTallyStatus);
     if (jVarLocalTallyStatus.status === 200) {
         let jVarLocalResponseText = await jVarLocalTallyStatus.text();
 
