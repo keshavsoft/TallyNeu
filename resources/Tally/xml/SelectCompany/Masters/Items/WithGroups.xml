@@ -1,5 +1,3 @@
-POST http://localhost:9000
-
 <ENVELOPE>
 	<HEADER>
 		<VERSION>1</VERSION>
@@ -26,48 +24,59 @@ POST http://localhost:9000
 						<SCROLLED>Vertical</SCROLLED>
 					</PART>
 					<LINE NAME="KS_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<LEFTFIELDS>KS_StockItemName, KS_StockClosingRate, KS_StockClosingValue</LEFTFIELDS>
+						<LEFTFIELDS>KS_StockItemName,KS_StockUnit,KS_StockCategory,KS_StockGuid,KS_StockItemParent</LEFTFIELDS>
 						<XMLTAG>&quot;stockitems&quot;</XMLTAG>
 					</LINE>
 
 					<FIELD NAME="KS_StockItemName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ItemName&quot;</XMLTAG>
+						<XMLTAG>&quot;ksstockitemname&quot;</XMLTAG>
 						<SET>$KS_StockItemName</SET>
 					</FIELD>
-					
-						<FIELD NAME="KS_StockClosingRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockclosingrate&quot;</XMLTAG>
-						<SET>$KS_StockClosingRate</SET>
+					<FIELD NAME="KS_StockUnit" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockunit&quot;</XMLTAG>
+						<SET>$KS_StockUnit</SET>
 					</FIELD>
-
-					<FIELD NAME="KS_StockClosingValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockclosingvalue&quot;</XMLTAG>
-						<SET>$KS_StockClosingValue</SET>
+					<FIELD NAME="KS_StockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockcategory&quot;</XMLTAG>
+						<SET>$KS_StockCategory</SET>
+					</FIELD>
+					<FIELD NAME="KS_StockGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;guid&quot;</XMLTAG>
+						<SET>$KS_StockGuid</SET>
+					</FIELD>
+					<FIELD NAME="KS_StockItemParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockstemparent&quot;</XMLTAG>
+						<SET>$KS_StockItemParent</SET>
 					</FIELD>
 					
-
 					<COLLECTION NAME="KS_loopKSStocks" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
 						<COLLECTIONS>KS_stock_collection:KS_loadedCompaniescoll</COLLECTIONS>
 					</COLLECTION>
 					<COLLECTION NAME="KS_stock_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
 						<TYPE>StockItem</TYPE>
 						<BELONGSTO>Yes</BELONGSTO>
-						<METHOD>KS_applicable_from:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
-						<METHOD>KS_Stock_hsn_code:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
 						<METHOD>KS_StockItemName:$name</METHOD>
 						<METHOD>KS_StockClosingRate:$closingrate</METHOD>
 						<METHOD>KS_StockClosingValue:$closingvalue</METHOD>
 						<METHOD>KS_StockUnit:$baseunits</METHOD>
-						<METHOD>KS_hsn_description:$$FullListEx:&quot;;&quot;:gstdetails:$hsn</METHOD>
+						<METHOD>KS_StockCategory:$category</METHOD>
+						<METHOD>KS_StockAlterId:$alterid</METHOD>
+						<METHOD>KS_StockGuid:$guid</METHOD>
+						<METHOD>KS_StockItemParent:$parent</METHOD>
+						<METHOD>KS_StockOpeningBalance:$openingbalance</METHOD>
+						<METHOD>KS_StockOpeningRate:$openingrate</METHOD>
+						<METHOD>KS_StockOpeningValue:$openingvalue</METHOD>
+						<METHOD>KS_StockAvgSalesPrice:$avgsaleprice</METHOD>
+						<METHOD>KS_StockAvgPurPrice:$avgpurcprice</METHOD>
+						<METHOD>KS_StockLastSaleDate:$lastsaledate</METHOD>
+						<METHOD>KS_StockLastPurcDate:$lastpurcdate</METHOD>
+						<METHOD>KS_additional_unit_conversion:$conversion</METHOD>
 						<NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
 					</COLLECTION>
 					<COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
 						<TYPE>Company</TYPE>
 						<NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
-						   <FILTERS>CompanyNameFilter</FILTERS>
 					</COLLECTION>
-
-					<SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;JYOTHI CYCLE STORES-2024-2025&quot;   </SYSTEM>
 				</TDLMESSAGE>
 			</TDL>
 		</DESC>

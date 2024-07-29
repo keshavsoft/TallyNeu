@@ -1,5 +1,8 @@
 import { StartFunc as Sales } from "./Sales/EntryFile.js";
 import { StartFunc as Ledgers } from "./Ledgers/EntryFile.js";
+import { StartFunc as Items } from "./Items/EntryFile.js";
+import { StartFunc as ItemsWithGroups } from "./ItemsWithGroups/EntryFile.js";
+
 import { StartFunc as SalesBatchLine } from "./SalesBatchLine/EntryFile.js";
 import { StartFunc as SalesBatchSortNumber } from "./SalesBatchSortNumber/EntryFile.js";
 import { StartFunc as SalesBatchSortFilter } from "./SalesBatchSortFilter/EntryFile.js";
@@ -26,6 +29,12 @@ let StartFunc = async () => {
             break;
         case "Ledgers":
             await Ledgers();
+            break;
+        case "Items":
+            await Items();
+            break;
+        case "ItemsWithGroups":
+            await ItemsWithGroups();
             break;
         case "SalesBatchLine":
             await SalesBatchLine();

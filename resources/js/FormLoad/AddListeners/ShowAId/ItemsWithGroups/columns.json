@@ -1,0 +1,22 @@
+[
+    {
+        "field": "KSSTOCKITEMNAME",
+        "title": "KSSTOCKITEMNAME",
+        "tagName": "KSSTOCKITEMNAME"
+    },
+    {
+        "field": "KSSTOCKCATEGORY",
+        "title": "KSSTOCKCATEGORY",
+        "tagName": "KSSTOCKCATEGORY"
+    },
+    {
+        "field": "KSSTOCKSTEMPARENT",
+        "title": "KSSTOCKSTEMPARENT",
+        "tagName": "KSSTOCKSTEMPARENT"
+    },
+    {
+        "field": "GUID",
+        "title": "GUID",
+        "tagName": "GUID"
+    }
+]
