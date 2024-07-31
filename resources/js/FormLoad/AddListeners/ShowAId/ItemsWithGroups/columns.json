@@ -1,22 +1,18 @@
 [
     {
-        "field": "KSSTOCKITEMNAME",
-        "title": "KSSTOCKITEMNAME",
-        "tagName": "KSSTOCKITEMNAME"
+        "field": "ITEMNAME",
+        "title": "ITEMNAME"
     },
     {
-        "field": "KSSTOCKCATEGORY",
-        "title": "KSSTOCKCATEGORY",
-        "tagName": "KSSTOCKCATEGORY"
+        "field": "ITEMCATEGORY",
+        "title": "ITEMCATEGORY"
     },
     {
-        "field": "KSSTOCKSTEMPARENT",
-        "title": "KSSTOCKSTEMPARENT",
-        "tagName": "KSSTOCKSTEMPARENT"
+        "field": "ITEMGROUP",
+        "title": "ITEMGROUP"
     },
     {
         "field": "GUID",
-        "title": "GUID",
-        "tagName": "GUID"
+        "title": "GUID"
     }
 ]

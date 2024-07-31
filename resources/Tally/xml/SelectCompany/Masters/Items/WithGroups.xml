@@ -29,7 +29,7 @@
 					</LINE>
 
 					<FIELD NAME="KS_StockItemName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockitemname&quot;</XMLTAG>
+						<XMLTAG>&quot;itemname&quot;</XMLTAG>
 						<SET>$KS_StockItemName</SET>
 					</FIELD>
 					<FIELD NAME="KS_StockUnit" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
@@ -37,7 +37,7 @@
 						<SET>$KS_StockUnit</SET>
 					</FIELD>
 					<FIELD NAME="KS_StockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockcategory&quot;</XMLTAG>
+						<XMLTAG>&quot;ITEMCATEGORY&quot;</XMLTAG>
 						<SET>$KS_StockCategory</SET>
 					</FIELD>
 					<FIELD NAME="KS_StockGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
@@ -45,7 +45,7 @@
 						<SET>$KS_StockGuid</SET>
 					</FIELD>
 					<FIELD NAME="KS_StockItemParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockstemparent&quot;</XMLTAG>
+						<XMLTAG>&quot;ITEMGROUP&quot;</XMLTAG>
 						<SET>$KS_StockItemParent</SET>
 					</FIELD>
 					

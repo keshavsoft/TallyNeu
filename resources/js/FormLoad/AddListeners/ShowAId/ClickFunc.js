@@ -2,6 +2,7 @@ import { StartFunc as Sales } from "./Sales/EntryFile.js";
 import { StartFunc as Ledgers } from "./Ledgers/EntryFile.js";
 import { StartFunc as Items } from "./Items/EntryFile.js";
 import { StartFunc as ItemsWithGroups } from "./ItemsWithGroups/EntryFile.js";
+import { StartFunc as ItemGroups } from "./ItemGroups/EntryFile.js";
 
 import { StartFunc as SalesBatchLine } from "./SalesBatchLine/EntryFile.js";
 import { StartFunc as SalesBatchSortNumber } from "./SalesBatchSortNumber/EntryFile.js";
@@ -24,6 +25,9 @@ let StartFunc = async () => {
     let jVarLocalSelectedReport = jFLocalSelectReportId();
     // console.log("jVarLocalSelectedReport : ", jVarLocalSelectedReport);
     switch (jVarLocalSelectedReport) {
+        case "ItemGroups":
+            await ItemGroups();
+            break;
         case "Sales":
             await Sales();
             break;
