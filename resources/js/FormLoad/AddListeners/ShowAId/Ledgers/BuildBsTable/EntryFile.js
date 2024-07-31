@@ -11,6 +11,8 @@ const jFLocalInitialize = ({ inData }) => {
     var $table = $(`#${tableName}`);
 
     $table.bootstrapTable("destroy").bootstrapTable({
+        exportDataType: "all",
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
         data: inData,
         columns: jFLocalGetVisibleColumns()
     });
