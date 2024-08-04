@@ -1,5 +1,6 @@
 import { StartFunc as nextColumn } from "./nextColumn.js";
 import { StartFunc as firstRow } from "./firstRow.js";
+import { StartFunc as firstRowNextRows } from "./firstRowNextRows.js";
 
 const tableName = "tableBS";
 
@@ -7,21 +8,21 @@ const StartFunc = (evt) => {
     let jVarLocalCurrentTaget = evt.currentTarget;
     let jVarLocalClosestRow = jVarLocalCurrentTaget.closest(".row");
     let jVarLocalPresentColumnIndex = jVarLocalClosestRow.dataset.columnindex;
+    let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
 
     switch (parseInt(jVarLocalPresentColumnIndex)) {
         case 0:
             firstRow({ inCurrentTarget: jVarLocalCurrentTaget });
-            let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
-
             const firstElementChild = jVarLocalFiltersBodyId.firstElementChild;
             jVarLocalFiltersBodyId.innerHTML = '';
             jVarLocalFiltersBodyId.append(firstElementChild);
-
-            nextColumn({ inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1 });
             break;
         default:
+            firstRowNextRows({ inCurrentTarget: jVarLocalCurrentTaget });
             break;
     };
+
+    nextColumn({ inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1 });
 };
 
 const StartFunc1 = (evt) => {
