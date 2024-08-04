@@ -1,7 +1,30 @@
 import { StartFunc as nextColumn } from "./nextColumn.js";
+import { StartFunc as firstRow } from "./firstRow.js";
+
 const tableName = "tableBS";
 
 const StartFunc = (evt) => {
+    let jVarLocalCurrentTaget = evt.currentTarget;
+    let jVarLocalClosestRow = jVarLocalCurrentTaget.closest(".row");
+    let jVarLocalPresentColumnIndex = jVarLocalClosestRow.dataset.columnindex;
+
+    switch (parseInt(jVarLocalPresentColumnIndex)) {
+        case 0:
+            firstRow({ inCurrentTarget: jVarLocalCurrentTaget });
+            let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
+
+            const firstElementChild = jVarLocalFiltersBodyId.firstElementChild;
+            jVarLocalFiltersBodyId.innerHTML = '';
+            jVarLocalFiltersBodyId.append(firstElementChild);
+
+            nextColumn({ inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1 });
+            break;
+        default:
+            break;
+    };
+};
+
+const StartFunc1 = (evt) => {
     let jVarLocalCurrentTaget = evt.currentTarget;
 
     let jVarLocalClosestRow = jVarLocalCurrentTaget.closest(".row");
