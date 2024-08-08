@@ -14,6 +14,7 @@ const StartFunc = (evt) => {
     var $table = $(`#${CommonTableName}`);
 
     $table.bootstrapTable("load", jVarLocalFilteredData);
+    $table.bootstrapTable("selectPage", 1);
 
     console.log("jVarLocalFilteredData : ", jVarLocalFilteredData);
     // switch (parseInt(jVarLocalPresentColumnIndex)) {
