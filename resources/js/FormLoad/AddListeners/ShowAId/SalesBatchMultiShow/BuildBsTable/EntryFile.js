@@ -1,6 +1,7 @@
 import { StartFunc as StartFuncTableTag } from "./TableTag.js";
 import { StartFunc as ShowFilters } from "./ShowFilters/EntryFile.js";
 import ColumnsJson from '../columns.json' with {type: 'json'};
+
 const tableName = "tableBS";
 
 const StartFunc = ({ inData }) => {

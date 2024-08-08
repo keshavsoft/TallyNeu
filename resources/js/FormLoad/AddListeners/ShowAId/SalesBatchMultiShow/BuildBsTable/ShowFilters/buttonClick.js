@@ -1,52 +1,59 @@
 import { StartFunc as nextColumn } from "./nextColumn.js";
-import { StartFunc as firstRow } from "./firstRow.js";
-import { StartFunc as firstRowNextRows } from "./firstRowNextRows.js";
-
-const tableName = "tableBS";
+// import { StartFunc as firstRow } from "./firstRow.js";
+// import { StartFunc as firstRowNextRows } from "./firstRowNextRows.js";
+const CommonTableName = "tableBS";
 
 const StartFunc = (evt) => {
     let jVarLocalCurrentTaget = evt.currentTarget;
     let jVarLocalClosestRow = jVarLocalCurrentTaget.closest(".row");
     let jVarLocalPresentColumnIndex = jVarLocalClosestRow.dataset.columnindex;
-    let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
+    // let jVarLocalFiltersBodyId = document.getElementById("FiltersBodyId");
 
-    switch (parseInt(jVarLocalPresentColumnIndex)) {
-        case 0:
-            firstRow({ inCurrentTarget: jVarLocalCurrentTaget });
-            const firstElementChild = jVarLocalFiltersBodyId.firstElementChild;
-            jVarLocalFiltersBodyId.innerHTML = '';
-            jVarLocalFiltersBodyId.append(firstElementChild);
-            break;
-        default:
-            firstRowNextRows({ inCurrentTarget: jVarLocalCurrentTaget });
-            break;
-    };
+    let jVarLocalFilteredData = jFLocalFilterRows({ inPresentRowIndex: parseInt(jVarLocalPresentColumnIndex) });
 
-    nextColumn({ inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1 });
+    var $table = $(`#${CommonTableName}`);
+
+    $table.bootstrapTable("load", jVarLocalFilteredData);
+
+    console.log("jVarLocalFilteredData : ", jVarLocalFilteredData);
+    // switch (parseInt(jVarLocalPresentColumnIndex)) {
+    //     case 0:
+    //         firstRow({ inCurrentTarget: jVarLocalCurrentTaget });
+
+    //         const firstElementChild = jVarLocalFiltersBodyId.firstElementChild;
+
+    //         jVarLocalFiltersBodyId.innerHTML = '';
+    //         jVarLocalFiltersBodyId.append(firstElementChild);
+    //         break;
+    //     default:
+    //         firstRowNextRows({ inCurrentTarget: jVarLocalCurrentTaget });
+    //         break;
+    // };
+
+    nextColumn({
+        inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1,
+        inFilteredData: jVarLocalFilteredData
+    });
 };
 
-const StartFunc1 = (evt) => {
-    let jVarLocalCurrentTaget = evt.currentTarget;
+const jFLocalFilterRows = ({ inPresentRowIndex }) => {
+    const jVarLocalRows = document.getElementById("FiltersBodyId").querySelectorAll(".row");
+    var div_array = [...jVarLocalRows]; // converts NodeList to Array
+    let jVarLocalFilteredArray = jVarGlobalPresentViewData;
 
-    let jVarLocalClosestRow = jVarLocalCurrentTaget.closest(".row");
-    let jVarLocalColumnName = jVarLocalClosestRow.dataset.columnname;
+    div_array.forEach(div => {
+        if (parseInt(div.dataset.columnindex) <= parseInt(inPresentRowIndex)) {
+            let jVarLocalClosestRow = div.closest(".row");
 
-    let jVarLocalSelect = jVarLocalClosestRow.querySelector("select");
-    let jVarLocalSelected = $(jVarLocalSelect).val();
-    let data = $("#tableBS").bootstrapTable('getData', { unfiltered: true });
-
-    const jVarLocalFilteredRows = data.filter(element => {
-        return jVarLocalSelected.includes(element[jVarLocalColumnName]);
+            let jVarLocalSelect = jVarLocalClosestRow.querySelector("select");
+            let jVarLocalSelected = $(jVarLocalSelect).val();
+            jVarLocalFilteredArray = jVarLocalFilteredArray.filter(element => {
+                return jVarLocalSelected.includes(element[div.dataset.columnname]);
+            });
+        };
     });
 
-    var $table = $(`#${tableName}`);
-
-    $table.bootstrapTable("load", jVarLocalFilteredRows);
-    let jVarLocalPresentColumnIndex = jVarLocalClosestRow.dataset.columnindex;
-    console.log("jVarLocalPresentColumnIndex : ", jVarLocalPresentColumnIndex);
-    nextColumn({ inColumnIndex: parseInt(jVarLocalPresentColumnIndex) + 1 });
+    return jVarLocalFilteredArray;
 };
-
-// BuildBsTable({ inData: jVarLocalFilteredRows });
 
 export { StartFunc };

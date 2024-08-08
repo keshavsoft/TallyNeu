@@ -1,4 +1,3 @@
-import { StartFunc as nextColumn } from "./nextColumn.js";
 const tableName = "tableBS";
 
 const StartFunc = ({ inCurrentTarget }) => {
