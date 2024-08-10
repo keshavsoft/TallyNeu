@@ -1,0 +1,18 @@
+[
+    {
+        "field": "NAME",
+        "title": "NAME"
+    },
+    {
+        "field": "PARENT",
+        "title": "PARENT"
+    },
+    {
+        "field": "ADDRESS",
+        "title": "ADDRESS"
+    },
+    {
+        "field": "GUID",
+        "title": "GUID"
+    }
+]

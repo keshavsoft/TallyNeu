@@ -14,7 +14,7 @@ const jFLocalInitialize = ({ inData, inColumnsArray }) => {
         exportDataType: "all",
         exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
         data: inData,
-        columns: jFLocalGetVisibleColumns({ inColumnsArray })
+        columns: inColumnsArray
     });
 };
 

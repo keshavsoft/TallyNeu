@@ -5,53 +5,53 @@ POST http://localhost:9000
         <VERSION>1</VERSION>
         <TALLYREQUEST>Export</TALLYREQUEST>
         <TYPE>Data</TYPE>
-        <ID>CredFlow_CompanyWiseLedger</ID>
+        <ID>KS_CompanyWiseLedger</ID>
     </HEADER>
     <BODY>
         <DESC>
             <TDL>
                 <TDLMESSAGE>
-                    <REPORT NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <FORMS>CredFlow_CompanyWiseLedger</FORMS>
+                    <REPORT NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>KS_CompanyWiseLedger</FORMS>
                     </REPORT>
-                    <FORM NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <TOPPARTS>CredFlow_CompanyWiseLedger</TOPPARTS>
+                    <FORM NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>KS_CompanyWiseLedger</TOPPARTS>
                     </FORM>
-                    <PART NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <TOPLINES>CredFlow_CompanyWiseLedger</TOPLINES>
-                        <REPEAT>CredFlow_CompanyWiseLedger : CredFlow_loopLedger</REPEAT>
+                    <PART NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>KS_CompanyWiseLedger</TOPLINES>
+                        <REPEAT>KS_CompanyWiseLedger : KS_loopLedger</REPEAT>
                         <SCROLLED>Vertical</SCROLLED>
                     </PART>
-                    <LINE NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <LEFTFIELDS>CredFlow_ledger_name,CredFlow_ledger_GUID</LEFTFIELDS>
+                    <LINE NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>KS_ledger_name,KS_ledger_GUID</LEFTFIELDS>
                         <XMLTAG>&quot;Ledgers&quot;</XMLTAG>
                     </LINE>
-                    <FIELD NAME="CredFlow_ledger_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                    <FIELD NAME="KS_ledger_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
                         <XMLTAG>&quot;LedgerName&quot;</XMLTAG>
                         <SET>$ledger_name</SET>
                     </FIELD>
-<FIELD NAME="CredFlow_ledger_GUID" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                    <XMLTAG>&quot;id&quot;</XMLTAG>
+<FIELD NAME="KS_ledger_GUID" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                    <XMLTAG>&quot;GUID&quot;</XMLTAG>
                     <SET>$ledger_guid</SET>
                 </FIELD>
 
 
-                    <COLLECTION NAME="CredFlow_loopLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-                        <COLLECTIONS>CredFlow_datacoll:CredFlow_loadedCompaniescoll</COLLECTIONS>
+                    <COLLECTION NAME="KS_loopLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>KS_datacoll:KS_loadedCompaniescoll</COLLECTIONS>
                     </COLLECTION>
-                    <COLLECTION NAME="CredFlow_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                    <COLLECTION NAME="KS_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
                         <TYPE>Ledger</TYPE>
                         <BELONGSTO>Yes</BELONGSTO>
                         <METHOD>ledger_name:$name</METHOD>
                          <METHOD>ledger_GUID:$GUID</METHOD>
                     </COLLECTION>
-                    <COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                    <COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
                         <TYPE>Company</TYPE>
                         <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
                         <FILTERS>CompanyNameFilter</FILTERS>
                     </COLLECTION>
 
-   <SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;KeshavSoft&quot;   </SYSTEM>
+   <SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;JYOTHI CYCLE STORES-2023-2024&quot;   </SYSTEM>
              
                 </TDLMESSAGE>
             </TDL>
