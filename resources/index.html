@@ -413,7 +413,7 @@
     <script>
         let jVarGlobalPresentViewData = [];
 
-        function jFLocalBatchAmountTotal(data) {
+        function jFLocalBatchAmountTotal1(data) {
             var field = this.field;
 
             return data.map(function (row) {
@@ -422,6 +422,47 @@
                 return sum + i
             }, 0)
         };
+
+        function k1(data) {
+            var field = this.field;
+
+            return data.map(function (row) {
+                return +parseFloat(row[field].replace(",", ""));
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0)
+        };
+
+        function jFLocalBatchAmountTotal(data) {
+            var field = this.field;
+            let LocalTotal = jVarGlobalPresentViewData.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                };
+                console.log("aaaa : ", row[field], row);
+
+                return +row[field].replace(",", "");
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0);
+
+            return LocalTotal.toFixed(2);
+        };
+
+        function jFLocalQtyTotal(data) {
+            var field = this.field;
+            let LocalTotal = jVarGlobalPresentViewData.map(function (row) {
+                if (row[field] === undefined) {
+                    return 0;
+                };
+                return +row[field];
+            }).reduce(function (sum, i) {
+                return sum + i
+            }, 0);
+
+            return LocalTotal.toFixed(3);
+        };
+
     </script>
 </body>
 

@@ -1,51 +1,16 @@
-import { StartFunc as xml2json } from "../../../../xml2json.js";
-import { StartFunc as FromTally } from "./FromTally/EntryFile.js";
-import { StartFunc as BuildBsTable } from "./BuildBsTable/EntryFile.js";
-import { StartFunc as ToBatchWiseLines } from "./ToBatchWiseLines.js";
+import { StartFunc as CommonFuncs } from "../Common/WithFilters/EntryFile.js";
+const CommonKeyName = "SALES";
+import ColumnsJson from './columns.json' with {type: 'json'};
 
 let StartFunc = async () => {
-    let jVarLocalTallyStatus = await FromTally();
+    let jVarLocalTallyData = await CommonFuncs({
+        inKeyName: CommonKeyName,
+        inXmlPath: "Tally/xml/SelectCompany/Transactions/Sales/BatchDate.xml",
+        inColumnsArray: ColumnsJson
+    });
 
-    if (jVarLocalTallyStatus.status === 200) {
-        let jVarLocalResponseText = await jVarLocalTallyStatus.text();
-        localStorage.setItem("k1", jVarLocalResponseText);
-        let dom = parseXml(jVarLocalResponseText);
+    console.log("aaaa : ", JSON.parse(jVarLocalTallyData).ENVELOPE[CommonKeyName]);
 
-        let jVarLocalJson = xml2json(dom, "");
-
-        localStorage.setItem("jVarLocalJson", jVarLocalJson);
-        let jVarLocalBatchLineWise = ToBatchWiseLines({ inBillWise: JSON.parse(jVarLocalJson).ENVELOPE.SALES });
-        let jVarLocalSorted = jFLocalSort({ inCollection: jVarLocalBatchLineWise });
-
-        BuildBsTable({ inData: jVarLocalSorted });
-    };
-};
-
-const jFLocalSort = ({ inCollection }) => {
-    return _.sortBy(inCollection, ['BATCHITEM', 'BATCHNAME']);
-};
-
-function parseXml(xml) {
-    var dom = null;
-    if (window.DOMParser) {
-        try {
-            dom = (new DOMParser()).parseFromString(xml, "text/xml");
-        }
-        catch (e) { dom = null; }
-    }
-    else if (window.ActiveXObject) {
-        try {
-            dom = new ActiveXObject('Microsoft.XMLDOM');
-            dom.async = false;
-            if (!dom.loadXML(xml)) // parse error ..
-
-                window.alert(dom.parseError.reason + dom.parseError.srcText);
-        }
-        catch (e) { dom = null; }
-    }
-    else
-        alert("cannot parse xml string!");
-    return dom;
 };
 
 export { StartFunc };

@@ -5,32 +5,24 @@ import { StartFunc as ToBatchWiseLines } from "./ToBatchWiseLines.js";
 
 let StartFunc = async () => {
     let jVarLocalTallyStatus = await FromTally();
-    // console.log("aaaaaaaaaaaa : ", jVarLocalTallyStatus);
+
     if (jVarLocalTallyStatus.status === 200) {
         let jVarLocalResponseText = await jVarLocalTallyStatus.text();
-
+        localStorage.setItem("k1", jVarLocalResponseText);
         let dom = parseXml(jVarLocalResponseText);
 
         let jVarLocalJson = xml2json(dom, "");
 
+        localStorage.setItem("jVarLocalJson", jVarLocalJson);
         let jVarLocalBatchLineWise = ToBatchWiseLines({ inBillWise: JSON.parse(jVarLocalJson).ENVELOPE.SALES });
-        let jVarLocalChangeNumber = jFLocalChangeNumber({ inCollection: jVarLocalBatchLineWise });
-        jVarGlobalPresentViewData = jFLocalSort({ inCollection: jVarLocalChangeNumber });
-    };
+        let jVarLocalSorted = jFLocalSort({ inCollection: jVarLocalBatchLineWise });
 
-    BuildBsTable({ inData: jVarGlobalPresentViewData });
+        BuildBsTable({ inData: jVarLocalSorted });
+    };
 };
 
 const jFLocalSort = ({ inCollection }) => {
-    return _.sortBy(inCollection, ['VOUCHERNUMBER']);
-};
-
-const jFLocalChangeNumber = ({ inCollection }) => {
-    let jVarLocalNewData = inCollection.map(element => {
-        element.VOUCHERNUMBER = parseInt(element.VOUCHERNUMBER);
-        return element;
-    });
-    return jVarLocalNewData;
+    return _.sortBy(inCollection, ['BATCHITEM', 'BATCHNAME']);
 };
 
 function parseXml(xml) {

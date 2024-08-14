@@ -7,7 +7,8 @@
     {
         "field": "VOUCHERNUMBER",
         "title": "Voucher Number",
-        "tagName": "VOUCHERNUMBER"
+        "tagName": "VOUCHERNUMBER",
+        "align": "right"
     },
     {
         "field": "PARTYNAME",
@@ -49,6 +50,6 @@
         "field": "BatchQtyOnly",
         "title": "Qty",
         "tagName": "BatchQtyOnly",
-        "footerFormatter": "jFLocalBatchAmountTotal"
+        "footerFormatter": "jFLocalQtyTotal"
     }
 ]

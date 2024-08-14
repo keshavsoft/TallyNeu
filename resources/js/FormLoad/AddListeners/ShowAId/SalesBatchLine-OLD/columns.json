@@ -1,5 +1,10 @@
 [
     {
+        "field": "PARTYNAME",
+        "title": "PARTYNAME",
+        "tagName": "PARTYNAME"
+    },
+    {
         "field": "VOUCHERTYPE",
         "title": "Voucher Type",
         "tagName": "VOUCHERTYPE"
@@ -7,13 +12,7 @@
     {
         "field": "VOUCHERNUMBER",
         "title": "Voucher Number",
-        "tagName": "VOUCHERNUMBER",
-        "align": "right"
-    },
-    {
-        "field": "PARTYNAME",
-        "title": "PARTYNAME",
-        "tagName": "PARTYNAME"
+        "tagName": "VOUCHERNUMBER"
     },
     {
         "field": "DATE",
@@ -30,6 +29,8 @@
         "title": "Batch Name",
         "tagName": "BATCHNAME"
     },
+    
+
     {
         "field": "BATCHAMOUNT",
         "title": "Amount",
@@ -50,6 +51,6 @@
         "field": "BatchQtyOnly",
         "title": "Qty",
         "tagName": "BatchQtyOnly",
-        "footerFormatter": "jFLocalQtyTotal"
+        "footerFormatter": "jFLocalBatchAmountTotal"
     }
 ]
