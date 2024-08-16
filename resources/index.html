@@ -256,6 +256,7 @@
                         <option value="SalesBatchSortFilter">SalesBatchSortFilter</option>
                         <option value="SalesBatchMultiSelect">SalesBatchMultiSelect</option>
                         <option value="SalesBatchMultiShow">SalesBatchMultiShow</option>
+                        <option value="SalesBatchWFilters">SalesBatchWFilters</option>
                     </select>
                 </div>
                 <div class="col-5" id="PeriodColId" style="display:block;">
@@ -435,7 +436,7 @@
 
         function jFLocalBatchAmountTotal(data) {
             var field = this.field;
-            let LocalTotal = jVarGlobalPresentViewData.map(function (row) {
+            let LocalTotal = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 };
@@ -451,7 +452,7 @@
 
         function jFLocalQtyTotal(data) {
             var field = this.field;
-            let LocalTotal = jVarGlobalPresentViewData.map(function (row) {
+            let LocalTotal = data.map(function (row) {
                 if (row[field] === undefined) {
                     return 0;
                 };

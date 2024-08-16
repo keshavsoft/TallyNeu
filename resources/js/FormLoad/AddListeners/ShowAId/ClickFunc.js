@@ -11,6 +11,7 @@ import { StartFunc as SalesBatchSortNumber } from "./SalesBatchSortNumber/EntryF
 import { StartFunc as SalesBatchSortFilter } from "./SalesBatchSortFilter/EntryFile.js";
 import { StartFunc as SalesBatchMultiSelect } from "./SalesBatchMultiSelect/EntryFile.js";
 import { StartFunc as SalesBatchMultiShow } from "./SalesBatchMultiShow/EntryFile.js";
+import { StartFunc as SalesBatchWFilters } from "./SalesBatchWFilters/EntryFile.js";
 
 let jFLocalHideSpinner = () => {
     let jVarLocalSpinnerId = document.getElementById("SpinnerId");
@@ -62,6 +63,9 @@ let StartFunc = async () => {
             break;
         case "SalesBatchMultiShow":
             await SalesBatchMultiShow();
+            break;
+        case "SalesBatchWFilters":
+            await SalesBatchWFilters();
             break;
         default:
             break;

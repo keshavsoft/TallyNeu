@@ -439,12 +439,6 @@
             <Compute> IsIGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsIGSTLed:$Amount</Compute>
             <Compute> IsCessLedVar:$$FilterAmtTotal:LedgerEntries:IsCessLed:$Amount</Compute>
             <METHOD>KeshavSoftInvNo:$vouchernumber</METHOD>
-
-
-            <PARMVAR>SVFromDate:Date:$$Date:&quot;01-04-2024&quot;</PARMVAR>
-            <PARMVAR>SVToDate:Date:$$Date:&quot;17-12-2024&quot;</PARMVAR>
-
-
           </COLLECTION>
 
           <COLLECTION NAME="KeshavSoft_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">

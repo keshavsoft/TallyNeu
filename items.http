@@ -1,145 +1,572 @@
 POST http://localhost:9000
 
 <ENVELOPE>
-	<HEADER>
-		<VERSION>1</VERSION>
-		<TALLYREQUEST>Export</TALLYREQUEST>
-		<TYPE>Data</TYPE>
-		<ID>CredFlow_CompanyWiseStockItem</ID>
-	</HEADER>
-	<BODY>
-		<DESC>
-			<STATICVARIABLES>
-				<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
-			</STATICVARIABLES>
-			<TDL>
-				<TDLMESSAGE>
-					<REPORT NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<FORMS>CredFlow_CompanyWiseStockItem</FORMS>
-					</REPORT>
-					<FORM NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<TOPPARTS>CredFlow_CompanyWiseStockItem</TOPPARTS>
-					</FORM>
-					<PART NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<TOPLINES>CredFlow_CompanyWiseStockItem</TOPLINES>
-						<REPEAT>CredFlow_CompanyWiseStockItem : CredFlow_loopCredFlowStocks</REPEAT>
-						<SCROLLED>Vertical</SCROLLED>
-					</PART>
-					<LINE NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<LEFTFIELDS>CredFlow_StockItemName, CredFlow_Stock_hsn_code, CredFlow_applicable_from, CredFlow_StockClosingRate,CredFlow_StockClosingValue,CredFlow_StockUnit,CredFlow_StockCategory,CredFlow_StockAlterId,CredFlow_StockGuid,CredFlow_StockItemParent,CredFlow_StockOpeningBalance,CredFlow_StockOpeningRate,CredFlow_StockOpeningValue,CredFlow_StockAvgSalesPrice,CredFlow_StockAvgPurPrice,CredFlow_StockLastSaleDate,CredFlow_StockLastPurcDate,CredFlow_additional_unit_conversion,CredFlow_hsn_description</LEFTFIELDS>
-						<XMLTAG>&quot;stockitems&quot;</XMLTAG>
-					</LINE>
+  <HEADER>
+    <VERSION>1</VERSION>
+    <TALLYREQUEST>Export</TALLYREQUEST>
+    <TYPE>Data</TYPE>
+    <ID>KS_CompanyWiseSales</ID>
+  </HEADER>
+  <BODY>
+    <DESC>
+      <STATICVARIABLES>
+        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+      </STATICVARIABLES>
+      <TDL>
+        <TDLMESSAGE>
+          <REPORT NAME="KS_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <VARIABLE>SVFROMDATE,SVTODATE,SVCURRENTCOMPANY,Report Title</VARIABLE>
 
-					<FIELD NAME="CredFlow_StockItemName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockitemname&quot;</XMLTAG>
-						<SET>$CredFlow_StockItemName</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_Stock_hsn_code" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockhsncode&quot;</XMLTAG>
-						<SET>$CredFlow_Stock_hsn_code</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_applicable_from" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksApplicablefrom&quot;</XMLTAG>
-						<SET>$CredFlow_applicable_from</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockClosingRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockclosingrate&quot;</XMLTAG>
-						<SET>$CredFlow_StockClosingRate</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockClosingValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockclosingvalue&quot;</XMLTAG>
-						<SET>$CredFlow_StockClosingValue</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockUnit" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockunit&quot;</XMLTAG>
-						<SET>$CredFlow_StockUnit</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockcategory&quot;</XMLTAG>
-						<SET>$CredFlow_StockCategory</SET>
-					</FIELD>
-					<FIELD NAME="Credflow_StockAlterId" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockalterId&quot;</XMLTAG>
-						<SET>$CredFlow_StockAlterId</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;guid&quot;</XMLTAG>
-						<SET>$CredFlow_StockGuid</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockItemParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockstemparent&quot;</XMLTAG>
-						<SET>$CredFlow_StockItemParent</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockOpeningBalance" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockopeningbalance&quot;</XMLTAG>
-						<SET>$CredFlow_StockOpeningBalance</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockOpeningRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockopeningrate&quot;</XMLTAG>
-						<SET>$CredFlow_StockOpeningRate</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockOpeningValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockopeningvalue&quot;</XMLTAG>
-						<SET>$CredFlow_StockOpeningValue</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockAvgSalesPrice" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockavgsaleprice&quot;</XMLTAG>
-						<SET>$CredFlow_StockAvgSalesPrice</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockAvgPurPrice" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstockavgpurprice&quot;</XMLTAG>
-						<SET>$CredFlow_StockAvgPurPrice</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockLastSaleDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstocklastsaledate&quot;</XMLTAG>
-						<SET>$CredFlow_StockLastSaleDate</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_StockLastPurcDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksstocklastpurcpate&quot;</XMLTAG>
-						<SET>$CredFlow_StockLastPurcDate</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_additional_unit_conversion" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksadditionalunitsconversion&quot;</XMLTAG>
-						<SET>$CredFlow_additional_unit_conversion</SET>
-					</FIELD>
-					<FIELD NAME="CredFlow_hsn_description" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<XMLTAG>&quot;ksHSNdescription&quot;</XMLTAG>
-						<SET>$CredFlow_hsn_description</SET>
-					</FIELD>
-					
-					<COLLECTION NAME="CredFlow_loopCredFlowStocks" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<COLLECTIONS>CredFlow_stock_collection:CredFlow_loadedCompaniescoll</COLLECTIONS>
-					</COLLECTION>
-					<COLLECTION NAME="CredFlow_stock_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<TYPE>StockItem</TYPE>
-						<BELONGSTO>Yes</BELONGSTO>
-						<METHOD>CredFlow_applicable_from:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
-						<METHOD>CredFlow_Stock_hsn_code:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
-						<METHOD>CredFlow_StockItemName:$name</METHOD>
-						<METHOD>CredFlow_StockClosingRate:$closingrate</METHOD>
-						<METHOD>CredFlow_StockClosingValue:$closingvalue</METHOD>
-						<METHOD>CredFlow_StockUnit:$baseunits</METHOD>
-						<METHOD>CredFlow_StockCategory:$category</METHOD>
-						<METHOD>CredFlow_StockAlterId:$alterid</METHOD>
-						<METHOD>CredFlow_StockGuid:$guid</METHOD>
-						<METHOD>CredFlow_StockItemParent:$parent</METHOD>
-						<METHOD>CredFlow_StockOpeningBalance:$openingbalance</METHOD>
-						<METHOD>CredFlow_StockOpeningRate:$openingrate</METHOD>
-						<METHOD>CredFlow_StockOpeningValue:$openingvalue</METHOD>
-						<METHOD>CredFlow_StockAvgSalesPrice:$avgsaleprice</METHOD>
-						<METHOD>CredFlow_StockAvgPurPrice:$avgpurcprice</METHOD>
-						<METHOD>CredFlow_StockLastSaleDate:$lastsaledate</METHOD>
-						<METHOD>CredFlow_StockLastPurcDate:$lastpurcdate</METHOD>
-						<METHOD>CredFlow_additional_unit_conversion:$conversion</METHOD>
-						<METHOD>CredFlow_hsn_description:$$FullListEx:&quot;;&quot;:gstdetails:$hsn</METHOD>
-						<NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
-					</COLLECTION>
-					<COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
-						<TYPE>Company</TYPE>
-						<NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
-					</COLLECTION>
-				</TDLMESSAGE>
-			</TDL>
-		</DESC>
-	</BODY>
+            <FORMS>KS_CompanyWiseSales</FORMS>
+          </REPORT>
+          <FORM NAME="KS_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPPARTS>KS_CompanyWiseSales</TOPPARTS>
+          </FORM>
+          <PART NAME="KS_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPLINES>KS_CompanyWiseSales</TOPLINES>
+            <REPEAT>KS_CompanyWiseSales : KS_loopSales</REPEAT>
+            <SCROLLED>Vertical</SCROLLED>
+          </PART>
+          <LINE NAME="KS_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <LEFTFIELDS>KS_salesvchnumber, KS_salesvouchertype, KS_salesvchguid,
+              KS_salesvchpartyname, KS_salesvchreference, KS_salesvchnarration,
+              KS_salesvchtermsofdelivery, KS_salesvchdeliverynotes,
+              KS_salesvchdeliverynotesdate, KS_salesvchotherreference,
+              KS_salesvchbuyerordernumber, KS_salesvchbuyerorderdate,
+              KS_dispatcheddocumentno, KS_ShippedBy, KS_Destination,
+              KS_ladingbilldate, KS_ladingbillno, KS_motorvehicle,
+              KS_ConsigneeName, KS_Consigneecstnumber, KS_Consigneestatename,
+              KS_Consigneegstin, KS_ConsigneeAddress, KS_BuyerAddress,
+              KS_buyercountry, KS_buyerstatename, KS_buyerplaceofsupply,
+              KS_buyersalestaxno, KS_Buyerscstnumber, KS_salesvchpartygstin,
+              KS_salesvchpartyledgername, KS_salesvchbasicdatetime,
+              KS_salesvchcreditperiod, KS_salesvcheffectivedate,
+              KS_salesvoucher_ledgerentriesname, KS_salesvoucher_ledgerentriesamount,
+              KS_salesvoucher_inventoryentrystockitem,
+              KS_salesvoucher_stockItemDescription,
+              KS_salesvoucher_ledgerentriespositive, KS_salesvoucher_inventoryentryrate,
+              KS_salesvoucher_inventoryentryamount,
+              KS_salesvoucher_inventoryentryactualqty,
+              KS_salesvoucher_inventoryentrybilledqty, KS_salesvchalterid,
+              KS_Optional, KS_voucher_cancelled, KS_discount, KS_irn,
+              KS_irnAckNo, KS_irnAckDate,
+              KS_ledger_description,KS_HSNSACCode,KS_HSNSACGSTRate,KS_HSNSACIGSTRate,KS_HSNSACCGSTRate,KS_HSNSACSGSTRate,KS_HSNSACTaxableAmt,
+              KS_HSNSACIGSTAmt,KS_HSNSACCGSTAmt,KS_HSNSACSGSTAmt,KS_HSNSACCessAmt,KS_GSTREGISTRATION,KS_CMPGSTIN,KS_CMPGSTREGISTRATIONTYPE,KS_CMPGSTSTATE,KS_IRNQRCODE </LEFTFIELDS>
+            <XMLTAG>&quot;Sales&quot;</XMLTAG>
+            <Explode>KS_BatchDetails</Explode>
+
+          </LINE>
+          <PART NAME="KS_BatchDetails" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPLINES>KS_BatchDetails</TOPLINES>
+            <REPEAT>KS_BatchDetails : InventoryEntries </REPEAT>
+            <SCROLLED>Vertical</SCROLLED>
+          </PART>
+          <LINE NAME="KS_BatchDetails" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <LEFTFIELDS>KS_BatchItem,KS_BatchNm,KS_BatchQty,KS_BatchRt,KS_BatchAmt</LEFTFIELDS>
+            <XMLTAG>&quot;BATCH DETAILS&quot;</XMLTAG>
+          </LINE>
+          <FIELD NAME="KS_BatchItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Item&quot;</XMLTAG>
+            <SET>$StockItemName</SET>
+          </FIELD>
+          <FIELD NAME="KS_BatchNm" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Name&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$BatchName</SET>
+          </FIELD>
+          <FIELD NAME="KS_BatchQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Qty&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$BilledQty</SET>
+          </FIELD>
+          <FIELD NAME="KS_BatchRt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Rate&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$Rate</SET>
+          </FIELD>
+          <FIELD NAME="KS_BatchAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Amount&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$Amount</SET>
+          </FIELD>
+          <FIELD NAME="KS_Destination" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Destination&quot;</XMLTAG>
+            <SET>$destination</SET>
+          </FIELD>
+          <FIELD NAME="KS_Consigneecstnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee cst number&quot;</XMLTAG>
+            <SET>$consigneecstnumber</SET>
+          </FIELD>
+          <FIELD NAME="KS_Buyerscstnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer CST number&quot;</XMLTAG>
+            <SET>$buyerscstnumber</SET>
+          </FIELD>
+          <FIELD NAME="KS_Consigneegstin" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee gst&quot;</XMLTAG>
+            <SET>$consigneegstin</SET>
+          </FIELD>
+          <FIELD NAME="KS_Consigneestatename" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee state&quot;</XMLTAG>
+            <SET>$consigneestatename</SET>
+          </FIELD>
+          <FIELD NAME="KS_ConsigneeName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee name&quot;</XMLTAG>
+            <SET>$consigneename</SET>
+          </FIELD>
+          <FIELD NAME="KS_ConsigneeAddress" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee address&quot;</XMLTAG>
+            <SET>$consigneeaddress</SET>
+          </FIELD>
+          <FIELD NAME="KS_ShippedBy" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Dispatched through&quot;</XMLTAG>
+            <SET>$shippedby</SET>
+          </FIELD>
+          <FIELD NAME="KS_BuyerAddress" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Address&quot;</XMLTAG>
+            <SET>$buyeraddress</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Voucher Number&quot;</XMLTAG>
+            <SET>$salesvchnumber</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvouchertype" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"Voucher Type"</XMLTAG>
+            <SET>$KS_salesvouchertype</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchguid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;VoucherGuid&quot;</XMLTAG>
+            <SET>$salesvchguid</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchpartyname" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Party Name&quot;</XMLTAG>
+            <SET>$salesvchpartyname</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchreference" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Reference&quot;</XMLTAG>
+            <SET>$salesvchreference</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchpartygstin" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;PartyGSTIN&quot;</XMLTAG>
+            <SET>$salesvchpartygstin</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchpartyledgername" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger Name&quot;</XMLTAG>
+            <SET>$salesvchpartyledgername</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchbasicdatetime" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Date Time&quot;</XMLTAG>
+            <SET>$salesvchbasicdatetime</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchcreditperiod" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Credit Period&quot;</XMLTAG>
+            <SET>$salesvchcreditperiod</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvcheffectivedate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Date&quot;</XMLTAG>
+            <SET>$salesvcheffectivedate</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_ledgerentriesname" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Name&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriesname</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_ledgerentriesamount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Amount&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriesamount</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_inventoryentrystockitem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Stock Item Name&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentrystockitem</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_stockItemDescription" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"Stock Item Description"</XMLTAG>
+            <SET>$salesvoucher_stockItemDescription</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_ledgerentriespositive" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Positive&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriespositive</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_inventoryentryrate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Rate&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryrate</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_inventoryentryamount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Amount&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryamount</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_inventoryentryactualqty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Actual Quantity&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryactualqty</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvoucher_inventoryentrybilledqty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Billed Quantity&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentrybilledqty</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchalterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Alter ID&quot;</XMLTAG>
+            <SET>$salesvchalterid</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchnarration" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Narration&quot;</XMLTAG>
+            <SET>$salesvchnarration</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchtermsofdelivery" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Terms Of Delivery&quot;</XMLTAG>
+            <SET>$salesvchtermsofdelivery</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchdeliverynotes" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Delivery Notes&quot;</XMLTAG>
+            <SET>$salesvchdeliverynotes</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchdeliverynotesdate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Delivery Notes Date&quot;</XMLTAG>
+            <SET>$salesvchdeliverynotesdate</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchotherreference" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Other references&quot;</XMLTAG>
+            <SET>$salesvchotherreference</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchbuyerordernumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Order Number&quot;</XMLTAG>
+            <SET>$salesvchbuyerordernumber</SET>
+          </FIELD>
+          <FIELD NAME="KS_salesvchbuyerorderdate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Order Date&quot;</XMLTAG>
+            <SET>$salesvchbuyerorderdate</SET>
+          </FIELD>
+          <FIELD NAME="KS_dispatcheddocumentno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Dispatched Document Number&quot;</XMLTAG>
+            <SET>$dispatcheddocumentno</SET>
+          </FIELD>
+          <FIELD NAME="KS_ladingbilldate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Lading Bill Date&quot;</XMLTAG>
+            <SET>$ladingbilldate</SET>
+          </FIELD>
+          <FIELD NAME="KS_ladingbillno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Lading Bill Number&quot;</XMLTAG>
+            <SET>$ladingbillno</SET>
+          </FIELD>
+          <FIELD NAME="KS_motorvehicle" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Motor Vehicle&quot;</XMLTAG>
+            <SET>$motorvehicle</SET>
+          </FIELD>
+          <FIELD NAME="KS_buyercountry" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Country&quot;</XMLTAG>
+            <SET>$buyercountry</SET>
+          </FIELD>
+          <FIELD NAME="KS_buyerstatename" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer state name&quot;</XMLTAG>
+            <SET>$buyerstatename</SET>
+          </FIELD>
+          <FIELD NAME="KS_buyerplaceofsupply" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer place of supply&quot;</XMLTAG>
+            <SET>$buyerplaceofsupply</SET>
+          </FIELD>
+          <FIELD NAME="KS_buyersalestaxno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer sales tax no&quot;</XMLTAG>
+            <SET>$buyersalestaxno</SET>
+          </FIELD>
+          <FIELD NAME="KS_Optional" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Optional&quot;</XMLTAG>
+            <SET>$optional</SET>
+          </FIELD>
+          <FIELD NAME="KS_voucher_cancelled" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;voucher_cancelled&quot;</XMLTAG>
+            <SET>$voucher_cancelled</SET>
+          </FIELD>
+
+          <FIELD NAME="KS_irn" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN&quot;</XMLTAG>
+            <SET>$KS_irn</SET>
+          </FIELD>
+          <FIELD NAME="KS_irnAckNo" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN ACK No&quot;</XMLTAG>
+            <SET>$KS_irnAckNo</SET>
+          </FIELD>
+          <FIELD NAME="KS_irnAckDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN ACK Date&quot;</XMLTAG>
+            <SET>$KS_irnAckDate</SET>
+          </FIELD>
+          <FIELD NAME="KS_ledger_description" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;LEDGER DESCRIPTION&quot;</XMLTAG>
+            <SET>$KS_ledger_description</SET>
+          </FIELD>
+          <FIELD NAME="KS_discount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Discount&quot;</XMLTAG>
+            <SET>$KS_discount</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACCode" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACCode&quot;</XMLTAG>
+            <SET>$KS_HSNSACCode</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACGSTRate&quot;</XMLTAG>
+            <SET>$KS_HSNSACGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACCGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACCGSTRate&quot;</XMLTAG>
+            <SET>$KS_HSNSACCGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACSGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACSGSTRate&quot;</XMLTAG>
+            <SET>$KS_HSNSACSGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACIGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACIGSTRate&quot;</XMLTAG>
+            <SET>$KS_HSNSACIGSTRate</SET>
+          </FIELD>
+
+          <FIELD NAME="KS_HSNSACTaxableAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACTaxableAmt&quot;</XMLTAG>
+            <SET>$KS_HSNSACTaxableAmt</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACIGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACIGSTAmt&quot;</XMLTAG>
+            <SET>$KS_HSNSACIGSTAmt</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACCGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACCGSTAmt&quot;</XMLTAG>
+            <SET>$KS_HSNSACCGSTAmt</SET>
+          </FIELD>
+          <FIELD NAME="KS_HSNSACSGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACSGSTAmt&quot;</XMLTAG>
+            <SET>$KS_HSNSACSGSTAmt</SET>
+          </FIELD>
+
+          <FIELD NAME="KS_HSNSACCESSAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_HSNSACCESSAmt&quot;</XMLTAG>
+            <SET>$KS_HSNSACCESSAmt</SET>
+          </FIELD>
+          <FIELD NAME="KS_GSTREGISTRATION" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_GSTREGISTRATION&quot;</XMLTAG>
+            <SET>$KS_GSTREGISTRATION</SET>
+          </FIELD>
+          <FIELD NAME="KS_CMPGSTIN" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_CMPGSTIN&quot;</XMLTAG>
+            <SET>$KS_CMPGSTIN</SET>
+          </FIELD>
+          <FIELD NAME="KS_CMPGSTREGISTRATIONTYPE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_CMPGSTREGISTRATIONTYPE&quot;</XMLTAG>
+            <SET>$KS_CMPGSTREGISTRATIONTYPE</SET>
+          </FIELD>
+          <FIELD NAME="KS_CMPGSTSTATE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KS_CMPGSTSTATE&quot;</XMLTAG>
+            <SET>$KS_CMPGSTSTATE</SET>
+          </FIELD>
+          <FIELD NAME="KS_IRNQRCODE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"IRNQRCODE"</XMLTAG>
+            <SET>$KS_IRNQRCODE</SET>
+          </FIELD>
+
+          <COLLECTION NAME="KS_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>vouchers:vouchertype</TYPE>
+            <CHILDOF>$$VchTypeSales</CHILDOF>
+            <BELONGSTO>Yes</BELONGSTO>
+            <ComputeVar>IsKeshavSoftVchNo:String:$vouchernumber</ComputeVar>
+            <METHOD>salesvchnumber:$vouchernumber</METHOD>
+            <METHOD>KS_salesvouchertype: $vouchertypename</METHOD>
+            <METHOD>salesvchguid:$guid</METHOD>
+            <METHOD>salesvchpartyname:$partyname</METHOD>
+            <METHOD>salesvchreference:$reference</METHOD>
+            <METHOD>salesvchnarration:$narration</METHOD>
+            <METHOD>salesvchtermsofdelivery:$$FullListEx:&quot;^&quot;:basicorderterms:$basicorderterms</METHOD>
+            <METHOD>salesvchdeliverynotes:$$FullListEx:&quot;^&quot;:invoicedelnotes:$basicshipdeliverynote</METHOD>
+            <METHOD>salesvchdeliverynotesdate:$$FullListEx:&quot;^&quot;:invoicedelnotes:$basicshippingdate</METHOD>
+            <METHOD>salesvchotherreference:$basicorderref</METHOD>
+            <METHOD>salesvchbuyerordernumber:$$FullListEx:&quot;^&quot;:invoiceorderlist:$basicpurchaseorderno</METHOD>
+            <METHOD>salesvchbuyerorderdate:$$FullListEx:&quot;^&quot;:invoiceorderlist:$basicorderdate</METHOD>
+            <METHOD>dispatcheddocumentno:$basicshipdocumentno</METHOD>
+            <METHOD>shippedby:$basicshippedby</METHOD>
+            <METHOD>destination:$basicfinaldestination</METHOD>
+            <METHOD>ladingbilldate:$billofladingdate</METHOD>
+            <METHOD>ladingbillno:$billofladingno</METHOD>
+            <METHOD>motorvehicle:$basicshipvesselno</METHOD>
+            <METHOD>consigneename:$basicbuyername</METHOD>
+            <METHOD>consigneecstnumber:$consigneecstnumber</METHOD>
+            <METHOD>consigneestatename:$consigneestatename</METHOD>
+            <METHOD>consigneegstin:$consigneegstin</METHOD>
+            <METHOD>consigneeaddress:$$FullListEx:&quot;^&quot;:basicbuyeraddress:$basicbuyeraddress</METHOD>
+            <METHOD>buyeraddress:$$FullListEx:&quot;^&quot;:address:$address</METHOD>
+            <METHOD>buyercountry:$countryofresidence</METHOD>
+            <METHOD>buyerstatename:$statename</METHOD>
+            <METHOD>buyerplaceofsupply:$placeofsupply</METHOD>
+            <METHOD>buyersalestaxno:$basicbuyerssalestaxno</METHOD>
+            <METHOD>buyerscstnumber:$buyerscstnumber</METHOD>
+            <METHOD>salesvchpartygstin: $partygstin</METHOD>
+            <METHOD>salesvchpartyledgername: $partyledgername</METHOD>
+            <METHOD>salesvchbasicdatetime: $basicdatetimeofinvoice</METHOD>
+            <METHOD>salesvcheffectivedate: $effectivedate</METHOD>
+            <METHOD>salesvchcreditperiod: $basicduedateofpymt</METHOD>
+            <METHOD>salesvchalterid: $alterid</METHOD>
+            <METHOD>optional : $Isoptional</METHOD>
+            <METHOD>salesvoucher_ledgerentriesname:$$FullListEx:&quot;^&quot;:ledgerentries:$ledgername</METHOD>
+            <METHOD>salesvoucher_ledgerentriesamount:$$FullListEx:&quot;^&quot;:ledgerentries:$amount</METHOD>
+            <METHOD>salesvoucher_inventoryentrystockitem:$$FullListEx:&quot;^&quot;:inventoryentries:$stockitemname</METHOD>
+            <METHOD>salesvoucher_stockItemDescription:$$FindUserDesc:inventoryentries</METHOD>
+            <METHOD>salesvoucher_ledgerentriespositive:$$FullListEx:&quot;^&quot;:ledgerentries:$isdeemedpositive</METHOD>
+            <METHOD>salesvoucher_inventoryentryrate:$$FullListEx:&quot;^&quot;:inventoryentries:$rate</METHOD>
+            <METHOD>salesvoucher_inventoryentryamount:$$FullListEx:&quot;^&quot;:inventoryentries:$amount</METHOD>
+            <METHOD>salesvoucher_inventoryentryactualqty:$$FindActualAltQty:inventoryentries</METHOD>
+            <METHOD>salesvoucher_inventoryentrybilledqty:$$FindBilledAltQty:inventoryentries</METHOD>
+            <METHOD>voucher_cancelled:$iscancelled</METHOD>
+            <METHOD>KS_discount:$$FullListEx:&quot;^&quot;:inventoryentries:$discount</METHOD>
+
+            <METHOD>KS_irn:$irn</METHOD>
+            <METHOD>KS_irnAckNo:$irnackno</METHOD>
+            <METHOD>KS_irnAckDate:$irnackdate</METHOD>
+            <METHOD>KS_ledger_description:$$FindLedgerDesc:ledgerentries</METHOD>
+            <METHOD>KS_HSNSACCode:If ($$IsEmpty:($$FullListEx:&quot;^&quot;:inventoryentries:$HSNCode) and $$IsEmpty:($$FullListEx:&quot;^&quot;:ledgerentries:$HSNCode)) then $$FullListEx:&quot;^&quot;:inventoryentries:$GSTHSNNAME else ($$FullListEx:&quot;^&quot;:inventoryentries:$HSNCode)+(&quot;^&quot;)+($$FullListEx:&quot;^&quot;:Ledgerentries:$HSNCode)</METHOD>
+            <METHOD>KS_HSNSACCESSAmt:$$FullListEx:&quot;^&quot;:inventoryentries:$Apprcess  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcess</METHOD>
+            <METHOD>KS_HSNSACTAXABLEAMT:$$FullListEx:&quot;^&quot;:inventoryentries:$Computedassessablevalue  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Computedassessablevalue</METHOD>
+            <METHOD>KS_HSNSACIGSTAmt:$$FullListEx:&quot;^&quot;:inventoryentries:$Apprigst  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprigst</METHOD>
+            <METHOD>KS_HSNSACCGSTAmt:$$FullListEx:&quot;^&quot;:(inventoryentries:$Apprcgst)  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcgst</METHOD>
+            <METHOD>KS_HSNSACSGSTAmt:$$FullListEx:&quot;^&quot;:(inventoryentries:$Apprcgst)  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcgst</METHOD>
+            <METHOD>KS_HSNSACIGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$igstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$igstrate</METHOD>
+            <METHOD>KS_HSNSACCGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$cgstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$cgstrate</METHOD>
+            <METHOD>KS_HSNSACSGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$sgstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$sgstrate</METHOD>
+            <METHOD>KS_HSNSACGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$igstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$igstrate</METHOD>
+            <METHOD>KS_GSTREGISTRATION:$GSTREGISTRATION</METHOD>
+            <METHOD>KS_CMPGSTIN:$CMPGSTIN</METHOD>
+            <METHOD>KS_CMPGSTREGISTRATIONTYPE:$CMPGSTREGISTRATIONTYPE</METHOD>
+            <METHOD>KS_CMPGSTSTATE:$CMPGSTSTATE</METHOD>
+            <METHOD>KS_IRNQRCODE:$IRNQRCODE</METHOD>
+
+            <NATIVEMETHOD>ledgerentries.*, inventoryentries.*, ledgerentries.userdescription.*, basicorderterms.*, invoicedelnotes.*, invoiceorderlist.*, basicbuyeraddress.*, address.* </NATIVEMETHOD>
+            <PARMVAR>SVFromDate:Date:$$Date:&quot;11-07-2024&quot;</PARMVAR>
+            <PARMVAR>SVToDate:Date:$$Date:&quot;11-07-2024&quot;</PARMVAR>
+
+
+          </COLLECTION>
+          <COLLECTION NAME="KS_datacoll1" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>vouchers:vouchertype</TYPE>
+            <CHILDOF>$$VchTypeSales</CHILDOF>
+            <BELONGSTO>Yes</BELONGSTO>
+            <Compute> IsCGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsCGSTLed:$Amount</Compute>
+            <Compute> IsSGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsSGSTLed:$Amount</Compute>
+            <Compute> IsIGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsIGSTLed:$Amount</Compute>
+            <Compute> IsCessLedVar:$$FilterAmtTotal:LedgerEntries:IsCessLed:$Amount</Compute>
+            <METHOD>KeshavSoftInvNo:$vouchernumber</METHOD>
+
+<PARMVAR>SVFromDate:Date:$$Date:&quot;11-07-2024&quot;</PARMVAR>
+            <PARMVAR>SVToDate:Date:$$Date:&quot;11-07-2024&quot;</PARMVAR>
+
+          </COLLECTION>
+
+          <COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>Company</TYPE>
+            <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+            <FILTERS>CompanyNameFilter</FILTERS>
+          </COLLECTION>
+
+          <COLLECTION NAME="KS_loopSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <COLLECTIONS>KS_datacoll:KS_loadedCompaniescoll</COLLECTIONS>
+
+          </COLLECTION>
+
+
+          <FUNCTION NAME="FindUserDesc" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$FullListEx:&quot;~&quot;:basicuserdescription:$basicuserdescription</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindActualAltQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$String:($ActualQty)+"="+$$String:($ActualQty):Symbol,ShortForm,Secondary</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindBilledAltQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$String:($ActualQty)+"="+$$String:($BilledQty):Symbol,ShortForm,Secondary</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindLedgerDesc" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>ledgerentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : ledgerentries</ACTION>
+            <ACTION>004:Set:s:$$FullListEx:&quot;~&quot;:userdescription:$userdescription</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v </ACTION>
+          </FUNCTION>
+          <SYSTEM TYPE="Formulae" NAME="IsCGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:CGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsSGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:SGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsIGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:IGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsCessLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:CESS:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+
+
+          <COLLECTION NAME="VchSalesHSNSummaryLed" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <SOURCECOLLECTION>KS_datacoll1</SOURCECOLLECTION>
+            <Walk> LedgerEntries</Walk>
+            <NATIVEMETHOD>IsDeemedPositive</NATIVEMETHOD>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By> HSNCd: $$GetInfoFromHierarchy:$LedgerNAme:"Ledger":"HSNCode":($$Owner:$Date):"GST"</By>
+            <By> ItemGSTRate: $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate</By>
+            <Compute> HSNCGSTRate: if $().IsCGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/2 else 0</Compute>
+            <Compute> HSNSGSTRate: if $().IsSGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/2 else 0</Compute>
+            <Compute> HSNIGSTRate: if $().IsIGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate else 0</Compute>
+            <AggrCompute> TaxableVal: Sum: $$AsAmount:$Amount</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: if $().IsCGSTLedVar!=0 then  $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@CGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: if $().IsSGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@SGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: if $().IsIGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> CessVal: Sum: if $().IsCessLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@CessDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <FILTERS>ISCR</FILTERS>
+          </COLLECTION>
+          <COLLECTION NAME="VchSalesHSNSummary" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <SOURCECOLLECTION>KS_datacoll1</SOURCECOLLECTION>
+            <Walk> InventoryEntries</Walk>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By>HSNCd: $$GetInfoFromHierarchy:$StockItemName:"StockItem":"HSNCode":($$Owner:$Date):"GST"</By>
+            <By>ItemGSTRate:  $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate</By>
+            <Compute> HSNCGSTRate: if $().IsCGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/2 else 0</Compute>
+            <Compute>HSNSGSTRate: if $().IsSGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/2 else 0</Compute>
+            <Compute> HSNIGSTRate: if $().IsIGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate else 0</Compute>
+            <AggrCompute> TaxableVal: Sum: $$AsAmount:$Amount</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: if $().IsCGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@CGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: if $().IsSGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@SGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: if $().IsIGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> CessVal: Sum: if $().IsCessLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@CessDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+          </COLLECTION>
+          <COLLECTION NAME="MainVchSalesHSNSummary" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <Collection> VchSalesHSNSummary, VchSalesHSNSummaryLed</Collection>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By> HSNCd: $HSNCd</By>
+            <By> ItemGSTRate: $ItemGSTRate</By>
+            <AggrCompute> HSNCGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> HSNSGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> HSNIGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> TaxableVal: Sum: $TaxableVal</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: $CGSTVal</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: $SGSTVal</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: $IGSTVal</AggrCompute>
+            <AggrCompute> CessVal: Sum: $CessVal</AggrCompute>
+          </COLLECTION>
+
+          <SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;M E - (from 1-Apr-22)&quot;   </SYSTEM>
+        </TDLMESSAGE>
+      </TDL>
+    </DESC>
+  </BODY>
 </ENVELOPE>

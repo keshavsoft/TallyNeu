@@ -11,10 +11,11 @@ let StartFunc = async () => {
         inColumnsArray: ColumnsJson
     });
     let jVarLocalDataToShow = JSON.parse(jVarLocalTallyData).ENVELOPE[CommonKeyName];
-    let jVarLocalNewData = jFLocalBatchWise({ inData: jVarLocalDataToShow });
-    console.log("jVarLocalNewData : ", jVarLocalDataToShow, jVarLocalNewData);
+
+    jVarGlobalPresentViewData = jFLocalBatchWise({ inData: jVarLocalDataToShow });
+
     BuildBsTable({
-        inData: jVarLocalNewData,
+        inData: jVarGlobalPresentViewData,
         inColumnsArray: ColumnsJson
     });
 };
