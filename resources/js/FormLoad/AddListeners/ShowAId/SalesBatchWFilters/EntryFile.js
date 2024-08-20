@@ -59,11 +59,10 @@ const jFLocalMoreBatches = ({ inBatchDetails }) => {
     };
 
     if (inBatchDetails.BATCHQTY === null === false) {
-        let jVarLocalBatchNames = inBatchDetails.BATCHNAME.split(",");
-        let jVarLocalBatchQtys = inBatchDetails.BATCHQTY.split(",");
-        let jVarLocalBatchRates = inBatchDetails.BATCHRATE.split(",");
-        let jVarLocalBatchAmounts = inBatchDetails.BATCHAMOUNT.split(",");
-
+        let jVarLocalBatchNames = inBatchDetails.BATCHNAME.split(", ");
+        let jVarLocalBatchQtys = inBatchDetails.BATCHQTY.split(", ");
+        let jVarLocalBatchRates = inBatchDetails.BATCHRATE.split(", ");
+        let jVarLocalBatchAmounts = inBatchDetails.BATCHAMOUNT.split(", ");
 
         jVarLocalBatchArray = jVarLocalBatchQtys.map((element, LoopIndex) => {
             return jFLocalPrepareRow({
