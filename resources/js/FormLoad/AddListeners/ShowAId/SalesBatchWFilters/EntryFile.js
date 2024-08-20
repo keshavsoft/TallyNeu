@@ -34,10 +34,17 @@ const jFLocalBatchWise = ({ inData }) => {
                 });
             });
         } else {
-            jVarLocalNewArray.push({
-                ...LoopBillLine,
-                ...jFLocalMoreBatches({ inBatchDetails: LoopBillLine.BATCHDETAILS })
+            let jVarLoopInsideBatchArray = jFLocalMoreBatches({ inBatchDetails: LoopBillLine.BATCHDETAILS });
+
+            jVarLoopInsideBatchArray.forEach(element => {
+                let jVarlLoopInsideObject = { ...LoopBillLine, BATCHITEM: LoopBillLine.BATCHDETAILS.BATCHITEM, ...element };
+                jVarLocalNewArray.push(jVarlLoopInsideObject);
             });
+            
+            // jVarLocalNewArray.push({
+            //     ...LoopBillLine,
+            //     ...jFLocalMoreBatches({ inBatchDetails: LoopBillLine.BATCHDETAILS })
+            // });
         };
     });
 
@@ -45,22 +52,56 @@ const jFLocalBatchWise = ({ inData }) => {
 };
 
 const jFLocalMoreBatches = ({ inBatchDetails }) => {
-    let jVarLocalBatchNames = inBatchDetails.BATCHNAME.split(",");
-    let jVarLocalBatchQtys = inBatchDetails.BATCHQTY.split(",");
-    let jVarLocalBatchRates = inBatchDetails.BATCHRATE.split(",");
-    let jVarLocalBatchAmounts = inBatchDetails.BATCHAMOUNT.split(",");
+    let jVarLocalBatchArray = [];
 
-    let jVarLocalBatchArray = jVarLocalBatchNames.map((element, LoopIndex) => {
-        return {
-            BATCHNAME: element,
-            BATCHQTY: jVarLocalBatchQtys[LoopIndex],
-            BatchQtyOnly: jVarLocalBatchQtys[LoopIndex].split(" ")[0],
-            BATCHRATE: jVarLocalBatchRates[LoopIndex],
-            BATCHAMOUNT: jVarLocalBatchAmounts[LoopIndex]
-        }
-    });
-    console.log("bbbbbbb : ", jVarLocalBatchArray);
+    if (inBatchDetails === undefined) {
+        return jVarLocalBatchArray;
+    };
+
+    if (inBatchDetails.BATCHQTY === null === false) {
+        let jVarLocalBatchNames = inBatchDetails.BATCHNAME.split(",");
+        let jVarLocalBatchQtys = inBatchDetails.BATCHQTY.split(",");
+        let jVarLocalBatchRates = inBatchDetails.BATCHRATE.split(",");
+        let jVarLocalBatchAmounts = inBatchDetails.BATCHAMOUNT.split(",");
+
+
+        jVarLocalBatchArray = jVarLocalBatchQtys.map((element, LoopIndex) => {
+            return jFLocalPrepareRow({
+                inLoopElement: element,
+                inBatchNames: jVarLocalBatchNames[LoopIndex],
+                inBatchQtys: element,
+                inBatchRates: jVarLocalBatchRates[LoopIndex],
+                inBatchAmounts: jVarLocalBatchAmounts[LoopIndex]
+            });
+        });
+    };
+
     return jVarLocalBatchArray;
+};
+
+const jFLocalPrepareRow = ({ inLoopElement, inBatchNames, inBatchQtys, inBatchRates, inBatchAmounts }) => {
+    let jVarReturnObject = {
+        BATCHNAME: "",
+        BATCHQTY: "",
+        BatchQtyOnly: "",
+        BATCHRATE: "",
+        BATCHAMOUNT: ""
+    };
+
+    let jVarLocalBatchNames = inBatchNames;
+    let jVarLocalBatchQtys = inBatchQtys;
+    let jVarLocalBatchRates = inBatchRates;
+    let jVarLocalBatchAmounts = inBatchAmounts;
+
+    if (jVarLocalBatchQtys === null === false) {
+        jVarReturnObject.BATCHNAME = jVarLocalBatchNames;
+        jVarReturnObject.BATCHQTY = inLoopElement;
+        jVarReturnObject.BatchQtyOnly = inLoopElement.split(" ")[0];
+        jVarReturnObject.BATCHRATE = jVarLocalBatchRates;
+        jVarReturnObject.BATCHAMOUNT = jVarLocalBatchAmounts;
+    };
+
+    return jVarReturnObject;
 };
 
 export { StartFunc };

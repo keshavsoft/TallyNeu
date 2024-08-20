@@ -5,11 +5,11 @@ let StartFunc = ({ inXml }) => {
         let jVarLocalCompanyName = jFLocalSelectCompanyId();
         let jVarLocalFromDate = jFLocalFromDateId();
         let jVarLocalToDate = jFLocalToDateId();
-        // console.log("jVarLocalXml : ", jVarLocalXml);
+        // console.log("jVarLocalXml : ", jVarLocalXml, jVarLocalFromDate, jVarLocalFromDate.split("-").reverse().join("-"));
         let jVarLocalChangeFromDate = jVarLocalXml.replace("KeshavSoft_FromDate", jVarLocalFromDate.split("-").reverse().join("-"));
         let jVarLocalChangeToDate = jVarLocalChangeFromDate.replace("KeshavSoft_ToDate", jVarLocalToDate.split("-").reverse().join("-"));
         let jVarLocalAfterReplace = jVarLocalChangeToDate.replace("KeshavSoft_CompanyName", jVarLocalCompanyName);
-        
+
         return jVarLocalAfterReplace;
     } catch (error) {
         return false;
