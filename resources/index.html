@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.6/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.2/dist/extensions/group-by-v2/bootstrap-table-group-by.css">
 
     <link rel="stylesheet" href="./css/chosen.css">
 
@@ -257,6 +259,7 @@
                         <option value="SalesBatchMultiSelect">SalesBatchMultiSelect</option>
                         <option value="SalesBatchMultiShow">SalesBatchMultiShow</option>
                         <option value="SalesBatchWFilters">SalesBatchWFilters</option>
+                        <option value="SalesBatchGroup">SalesBatchGroup</option>
                     </select>
                 </div>
                 <div class="col-5" id="PeriodColId" style="display:block;">
@@ -401,6 +404,8 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.2/dist/extensions/group-by-v2/bootstrap-table-group-by.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"
         integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
@@ -441,7 +446,7 @@
                     return 0;
                 };
 
-                return +row[field].replace(",", "");
+                return +row[field].replaceAll(",", "");
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0);
