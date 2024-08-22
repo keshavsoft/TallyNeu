@@ -384,6 +384,21 @@
             </footer>
         </div>
     </footer>
+
+    <template id="GroupHeaderTemplateId">
+        <div class="row ">
+            <div class="col" id="GroupNameId">
+                GroupName
+            </div>
+            <div class="col" id="QtyTotalId">
+                QtyTotal
+            </div>
+            <div class="col" id="AmountTotalId">
+                AmountTotal
+            </div>
+        </div>
+    </template>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -468,6 +483,34 @@
             return LocalTotal.toFixed(3);
         };
 
+        function jFLocaldataGroupByFormatter(value, idx, data) {
+            const jVarLocalAmountArray = data.map(element => {
+                return parseFloat(element.BATCHAMOUNT.replaceAll(",", ""));
+            });
+            const jVarLocalAmountTotal = jVarLocalAmountArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+            const jVarLocalQtyArray = data.map(element => {
+                return parseFloat(element.BATCHQTY.replaceAll(",", ""));
+            });
+            const jVarLocalQtyTotal = jVarLocalQtyArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+            const template = document.querySelector("#GroupHeaderTemplateId");
+
+            // Clone the new row and insert it into the table
+            const clone = template.content.cloneNode(true);
+           
+            const AmountTotalId = clone.querySelector("#AmountTotalId");
+            AmountTotalId.innerHTML = `Amount : <mark>${jVarLocalAmountTotal}</mark>`;
+
+            const QtyTotalId = clone.querySelector("#QtyTotalId");
+            QtyTotalId.innerHTML = `Qty : <mark>${jVarLocalQtyTotal}</mark>`;
+
+            const s = new XMLSerializer();
+            const str = s.serializeToString(clone);
+
+            return str;
+            //  return "<h1>Group</h1>";
+        }; 
     </script>
 </body>
 

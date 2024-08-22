@@ -26,6 +26,7 @@ const jFLocalInitialize = ({ inData }) => {
         showFullscreen: "true",
         groupBy: "true",
         groupByField: "BATCHNAME",
+        groupByFormatter: "jFLocaldataGroupByFormatter",
         data: inData,
         columns: jFLocalGetVisibleColumns()
     });
