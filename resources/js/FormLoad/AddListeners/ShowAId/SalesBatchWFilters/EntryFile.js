@@ -10,6 +10,7 @@ let StartFunc = async () => {
         inXmlPath: "Tally/xml/SelectCompany/Transactions/Sales/BatchDate.xml",
         inColumnsArray: ColumnsJson
     });
+    
     let jVarLocalDataToShow = JSON.parse(jVarLocalTallyData).ENVELOPE[CommonKeyName];
 
     jVarGlobalPresentViewData = jFLocalBatchWise({ inData: jVarLocalDataToShow });

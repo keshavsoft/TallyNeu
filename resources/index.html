@@ -434,26 +434,6 @@
     <script>
         let jVarGlobalPresentViewData = [];
 
-        function jFLocalBatchAmountTotal1(data) {
-            var field = this.field;
-
-            return data.map(function (row) {
-                return +parseFloat(row[field].replace(",", ""));
-            }).reduce(function (sum, i) {
-                return sum + i
-            }, 0)
-        };
-
-        function k1(data) {
-            var field = this.field;
-
-            return data.map(function (row) {
-                return +parseFloat(row[field].replace(",", ""));
-            }).reduce(function (sum, i) {
-                return sum + i
-            }, 0)
-        };
-
         function jFLocalBatchAmountTotal(data) {
             var field = this.field;
             let LocalTotal = data.map(function (row) {
@@ -475,7 +455,8 @@
                 if (row[field] === undefined) {
                     return 0;
                 };
-                return +row[field];
+
+                return +row[field].replaceAll(",", "");
             }).reduce(function (sum, i) {
                 return sum + i
             }, 0);
@@ -498,12 +479,15 @@
 
             // Clone the new row and insert it into the table
             const clone = template.content.cloneNode(true);
-           
+
             const AmountTotalId = clone.querySelector("#AmountTotalId");
             AmountTotalId.innerHTML = `Amount : <mark>${jVarLocalAmountTotal}</mark>`;
 
             const QtyTotalId = clone.querySelector("#QtyTotalId");
             QtyTotalId.innerHTML = `Qty : <mark>${jVarLocalQtyTotal}</mark>`;
+
+            const GroupNameId = clone.querySelector("#GroupNameId");
+            GroupNameId.innerHTML = value;
 
             const s = new XMLSerializer();
             const str = s.serializeToString(clone);
