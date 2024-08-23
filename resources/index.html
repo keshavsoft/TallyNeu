@@ -260,6 +260,7 @@
                         <option value="SalesBatchMultiShow">SalesBatchMultiShow</option>
                         <option value="SalesBatchWFilters">SalesBatchWFilters</option>
                         <option value="SalesBatchGroup">SalesBatchGroup</option>
+                        <option value="SalesBatchGroupTotal">SalesBatchGroupTotal</option>
                     </select>
                 </div>
                 <div class="col-5" id="PeriodColId" style="display:block;">
@@ -386,6 +387,21 @@
     </footer>
 
     <template id="GroupHeaderTemplateId">
+        <table class="table">
+            <tr>
+                <td colspan="6">Totals</td>
+            </tr>
+            <tr>
+                <td colspan="6" id="GroupNameId"> </td>
+                <td id="AmountTotalId"> </td>
+                <td></td>
+                <td></td>
+                <td id="QtyTotalId"> </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="GroupHeaderTemplateId1">
         <div class="row ">
             <div class="col" id="GroupNameId">
                 GroupName
@@ -494,7 +510,40 @@
 
             return str;
             //  return "<h1>Group</h1>";
-        }; 
+        };
+
+        function jFLocaldataGroupByFormatterWithItemName(value, idx, data) {
+            const jVarLocalAmountArray = data.map(element => {
+                return parseFloat(element.BATCHAMOUNT.replaceAll(",", ""));
+            });
+            const jVarLocalAmountTotal = jVarLocalAmountArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+            const jVarLocalQtyArray = data.map(element => {
+                return parseFloat(element.BATCHQTY.replaceAll(",", ""));
+            });
+            const jVarLocalQtyTotal = jVarLocalQtyArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+            const template = document.querySelector("#GroupHeaderTemplateId");
+
+            // Clone the new row and insert it into the table
+            const clone = template.content.cloneNode(true);
+
+            const AmountTotalId = clone.querySelector("#AmountTotalId");
+            AmountTotalId.innerHTML = `Amount : <mark>${jVarLocalAmountTotal}</mark>`;
+
+            const QtyTotalId = clone.querySelector("#QtyTotalId");
+            QtyTotalId.innerHTML = `Qty : <mark>${jVarLocalQtyTotal}</mark>`;
+
+            const GroupNameId = clone.querySelector("#GroupNameId");
+            GroupNameId.innerHTML = `${data[0].BATCHITEM} - ${value}`;
+
+            const s = new XMLSerializer();
+            const str = s.serializeToString(clone);
+
+            return str;
+            //  return "<h1>Group</h1>";
+        };
+
     </script>
 </body>
 
