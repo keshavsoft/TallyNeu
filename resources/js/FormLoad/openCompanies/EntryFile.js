@@ -10,7 +10,7 @@ let StartFunc = async () => {
 
         let dom = parseXml(jVarLocalResponseText);
         let jVarLocalJson = xml2json(dom, "");
-        // console.log("jVarLocalJson : ", jVarLocalJson);
+
         ShowInSelect({ inJsonArray: jVarLocalJson });
     };
 };
@@ -36,20 +36,6 @@ function parseXml(xml) {
     else
         alert("cannot parse xml string!");
     return dom;
-};
-
-let jFLocalToSelect = ({ inJsonArray }) => {
-    let jVarLocalFromTally = JSON.parse(inJsonArray);
-
-    let jVarLocalSelectCompanyId = document.getElementById('SelectCompanyId');
-
-    jVarLocalSelectCompanyId.innerHTML = "";
-
-    jVarLocalFromTally.ENVELOPE.COMPANIES.forEach(element => {
-        jVarLocalSelectCompanyId.options.add(
-            new Option(element.COMPANYNAME, element.COMPANYNAME)
-        )
-    });
 };
 
 export { StartFunc };

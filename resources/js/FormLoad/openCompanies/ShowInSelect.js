@@ -1,5 +1,7 @@
 let StartFunc = ({ inJsonArray }) => {
     let jVarLocalFromTally = JSON.parse(inJsonArray);
+    // debugger
+    // console.log("jVarLocalFromTally : ", jVarLocalFromTally);
 
     let jVarLocalSelectCompanyId = document.getElementById('SelectCompanyId');
 
@@ -7,6 +9,7 @@ let StartFunc = ({ inJsonArray }) => {
 
     if (Array.isArray(jVarLocalFromTally.ENVELOPE.COMPANIES)) {
         jFLocalIfArray({ inJsonArray: jVarLocalFromTally.ENVELOPE.COMPANIES });
+        return;
     };
 
     jFLocalIfNotArray({ inJsonObject: jVarLocalFromTally.ENVELOPE.COMPANIES });
