@@ -22,38 +22,6 @@ let StartFunc = async () => {
     // jFLocalInsertRow();
 };
 
-const jFLocalInsertRow = () => {
-    const tableName = "tableBS";
-    var $table = $(`#${tableName}`);
-
-    let data = $table.bootstrapTable('getData', { unfiltered: true });
-
-    data.forEach((element, LoopIndex) => {
-        switch (LoopIndex) {
-            case 0:
-
-                break;
-            case data.length - 1:
-
-                break;
-            default:
-                if (element.BATCHITEM === data[LoopIndex - 1].BATCHITEM === false) {
-                    console.log("aaaaaaaa : ", element.BATCHITEM, data[LoopIndex - 1].BATCHITEM);
-
-                    $table.bootstrapTable('insertRow', {
-                        index: LoopIndex + 1,
-                        row: {
-                            VOUCHERTYPE: ""
-                        }
-                    });
-                };
-
-                break;
-        };
-    });
-
-};
-
 const jFLocalBatchWise = ({ inData }) => {
     let jVarLocalNewArray = [];
 

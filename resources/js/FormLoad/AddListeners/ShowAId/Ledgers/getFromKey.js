@@ -1,5 +1,4 @@
 import { StartFunc as CommonFuncs } from "../Common/WithFilters/EntryFile.js";
-import { StartFunc as BuildBsTable } from "./BuildBsTable/EntryFile.js";
 
 const CommonKeyName = "LEDGERS";
 import ColumnsJson from './columns.json' with {type: 'json'};
@@ -13,10 +12,7 @@ let StartFunc = async () => {
 
     let jVarLocalDataToShow = JSON.parse(jVarLocalTallyData).ENVELOPE[CommonKeyName];
 
-    BuildBsTable({
-        inData: jVarLocalDataToShow,
-        inColumnsArray: ColumnsJson
-    });
+    return jVarLocalDataToShow;
 };
 
 export { StartFunc };

@@ -32,7 +32,7 @@
   },
   "modes": {
     "window": {
-      "title": "k1",
+      "title": "k2",
       "width": 800,
       "height": 500,
       "minWidth": 400,
@@ -76,7 +76,7 @@
     }
   },
   "cli": {
-    "binaryName": "k3",
+    "binaryName": "k12",
     "resourcesPath": "/resources/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/resources/js/neutralino.js",
